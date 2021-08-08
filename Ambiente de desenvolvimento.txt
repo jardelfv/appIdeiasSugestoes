@@ -1,0 +1,5 @@
+Versão suportada pelo servidor:
+
+PHP 5.6
+MySQL 5.6.51-log - MySQL Community Server
+Laravel 5.3
