@@ -5,19 +5,19 @@
 <section class="passo-passo container">
     <div class="row pt-5 pb-5">
         <div class="col-12 col-lg-4 text-center pt-5 pb-5">
-            <img class="image-fluide" src="https://jardel.dev/portaldeideias/img/icon1.png" alt="">
+            <img class="image-fluide" src="{{ asset('/img/icon1.png') }}" alt="">
             <h5 class="pt-4">Passo 1</h5>
             <p>Cadastre-se no portal, para criar seu login de acesso.
             </p>
         </div>
         <div class="col-12 col-lg-4 text-center pt-5 pb-5">
-            <img class="image-fluide" src="https://jardel.dev/portaldeideias/img/icon2.png" alt="">
+            <img class="image-fluide" src="{{ asset('/') }}img/icon2.png" alt="">
             <h5 class="pt-4">Passo 2</h5>
             <p>Registre sua ideia ou sugestão pelo formulário.
             </p>
         </div>
         <div class="col-12 col-lg-4 text-center pt-5 pb-5">
-            <img class="image-fluide" src="https://jardel.dev/portaldeideias/img/icon3.png" alt="">
+            <img class="image-fluide" src="{{ asset('/') }}img/icon3.png" alt="">
             <h5 class="pt-4">Passo 3</h5>
             <p>Aguarde a avaliação da sua ideia ou sugestão, receberá um e-mail de confirmação.</p>
         </div>
@@ -47,7 +47,7 @@
                             <textarea class="form-control" id="formSugestao">Texto aqui</textarea>
                             
                             <br>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-success">Enviar</button>
                         
                         </div>
                     </form>

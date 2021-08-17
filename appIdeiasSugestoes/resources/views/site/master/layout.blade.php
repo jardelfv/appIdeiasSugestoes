@@ -82,7 +82,13 @@
                         e como elas podem agregar à nossa administração pública.
                         E você ainda ganha um prêmio/benefício caso implantada.</p>
                     <div class="grupo-botoes pb-5">
-                        <a href="{{ route('register') }}" class="btn btn-success">Registrar agora</a>
+
+                            @if (Auth::check())
+
+                            @else
+                                <a href="{{ route('register') }}" class="btn btn-success">Registrar agora</a>
+                            @endif
+
                         <a href="{{ route('site.sobre') }}" class="btn btn-outline-light">Conhecer mais</a>
                     </div>
                 </div>
