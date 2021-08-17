@@ -14,39 +14,61 @@
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <style>
-        .secao-destaque {
-            background: url(https://jardel.dev/portaldeideias/img/bg.png) no-repeat;
+        .secao-destaque{
+            background: url({{ asset('/img/bg-topo.png') }}) no-repeat;
             background-size: cover;
         }
-
+        .text-footer{
+            font-size: 10pt;
+        }
         .img-footer {
-            width: 60%;
+            width: 70%;
+            padding-top: 5px;
+            padding-bottom: 25px;
+        }
+
+        .logo-top{
+            width: 40%;
+            height: 40%;
         }
 
     </style>
 </head>
 
 <body>
-    <div class="secao-destaque text-white text-center text-lg-left bg-dark pb-5">
+    <div class="secao-destaque  text-white text-center text-lg-left bg-success pb-5">
+        <div class="fundo-top"></div>
         <div class="container-fluide">
             <header class="row pt-2 pb-2">
                 <div class="col-12 col-lg-6">
                     <h1>
-                        <img src="https://jardel.dev/portaldeideias/img/logo.png"
+                        <img class="logo-top" src="{{ asset('img/logo.png') }}"
                             alt="Logo Prefeitura Municipal de Paracatu">
                     </h1>
                 </div>
                 <div class="col-12 col-lg-6">
                     <nav>
                         <ul class="nav justify-content-end">
-                            <li class="list-item"><a href="{{ route('site.home') }}"
-                                    class="nav-link text-white">Home</a></li>
-                            <li class="list-item"><a href="{{ route('site.login-site') }}"
-                                    class="nav-link text-white"><strong>Login no sistema</strong></a></li>
+
+                            @if (Route::has('login'))
+
+                                    @if (Auth::check())
+                                    <li class="list-item"><a href="{{ route('site.home') }}"
+                                                             class="nav-link text-white">Home</a></li>
+                                    <li class="list-item"><a href="{{ route('Painel.index') }}"
+                                                             class="nav-link text-white">Meu Painel</a></li>
+                                    @else
+                                    <li class="list-item"><a href="{{ route('login') }}"
+                                                             class="nav-link text-white"><strong>Login no sistema</strong></a></li>
+                                    <li class="list-item"><a href="{{ route('register') }}"
+                                                             class="nav-link text-white">Cadastre-se</a></li>
+                                    @endif
+
+                            @endif
+
                             <li class="list-item"><a href="{{ route('site.sobre') }}"
                                     class="nav-link text-white">Vantagens</a></li>
-                            <li class="list-item"><a href="{{ route('site.cadastro') }}"
-                                    class="nav-link text-white">Cadastre-se</a></li>
+
                         </ul>
                     </nav>
                 </div>
@@ -60,18 +82,19 @@
                         e como elas podem agregar à nossa administração pública.
                         E você ainda ganha um prêmio/benefício caso implantada.</p>
                     <div class="grupo-botoes pb-5">
-                        <a href="{{ route('site.cadastro') }}" class="btn btn-primary">Registrar agora</a>
+                        <a href="{{ route('register') }}" class="btn btn-success">Registrar agora</a>
                         <a href="{{ route('site.sobre') }}" class="btn btn-outline-light">Conhecer mais</a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 
     @yield('content')
 
-    <footer class="page-footer font-small blue pt-4" style="background-color: #2568a1;">
+    <footer class="page-footer font-small blue pt-4" style="background-color: #008853;">
 
         <!-- Footer Links -->
         <div class="container-fluid text-center text-md-left text-white">
@@ -80,7 +103,7 @@
             <div class="row">
 
                 <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
+                <div class="text-footer col-md-5 mt-md-0 mt-3">
 
                     <!-- Content -->
                     <h5 class="text-uppercase">PREFEITURA MUNICIPAL DE PARACATU</h5>
@@ -94,7 +117,7 @@
 
                 <!-- Grid column -->
                 <div class="col-md-3 mb-md-0 mb-3 align-self-center">
-                    <img src='https://jardel.dev/portaldeideias/img/logo-footer.jpg' class="img-footer" />
+                    <img src='{{ asset('img/logo-verde-horizontal.png') }}' class="img-footer" />
 
                 </div>
                 <!-- Grid column -->
@@ -106,7 +129,7 @@
         <!-- Footer Links -->
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 text-white" style="background-color: #113f68;">
+        <div class="footer-copyright text-center py-3 text-white bg-success" >
             <span>&copy; <?php echo date('Y')?> Copyright: PREFEITURA MUNICIPAL DE PARACATU | Desenvolvido por: </span>
             <a href="https://jardel.dev/"> Jardel dev</a>
         </div>

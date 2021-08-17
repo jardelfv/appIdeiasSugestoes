@@ -12,8 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('site.home');
-})->name('site.home');
+    return view('site.index');
+});
+
+Auth::routes();
+
+Route::get('/', 'Home\HomeController@index')->name('site.home');
+Route::get('/Painel', 'Painel\PainelController@index')->name('Painel.index');
+Route::get('/Painel/Usuarios', 'Painel\PainelController@viewUsuarios')->name('Painel.Usuarios.index');
+
 
 Route::get('/login-site', function () {
     return view('site.login-site');
@@ -26,3 +33,6 @@ Route::get('/sobre', function () {
 Route::get('/cadastro', function () {
     return view('site.cadastro');
 })->name('site.cadastro');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
