@@ -8,20 +8,16 @@
           <img src="{{ asset('AdminLTE/') }}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{ $user->name }}</p>
+          <p>{{ Auth::user()->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+          <a href="{{ route('site.home') }}">Página inicial</a>
         </div>
-      </form>
+
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
@@ -35,7 +31,10 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="{{ route('Painel.index') }}"><i class="fa fa-home"></i> Painel Principal</a></li>
-            <li class="active"><a href="{{ route('Painel.Usuarios.index') }}"><i class="fa fa-users"></i> Usuários</a></li>
+            <li class="active"><a href="{{ route('Painel.sugestoes.addSugestao') }}"><i class="fa fa-lightbulb-o"></i> Cadastrar Sugestões</a></li>
+            <li class="active"><a href="{{ route('Painel.sugestoes.listAllSugestoes') }}"><i class="fa fa-lightbulb-o"></i> Sugestões Realizadas</a></li>
+            <li class="active"><a href="{{ route('Painel.sugestoes.avaliarSugestoes') }}"><i class="fa fa-lightbulb-o"></i> Avaliar Sugestões</a></li>
+            <li class="active"><a href="{{ route('Painel.users.listAllUsers') }}"><i class="fa fa-users"></i> Usuários</a></li>
           </ul>
         </li>
         

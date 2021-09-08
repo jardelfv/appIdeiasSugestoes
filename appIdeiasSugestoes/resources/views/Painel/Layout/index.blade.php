@@ -23,7 +23,8 @@
                         
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <a href="{{ route('site.home') }}">Página inicial</a>
+                        <li><a href="{{ route('site.home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
 
                         @if (isset($urlAtual))
                         <li class="active">{{ $urlAtual }}</li>

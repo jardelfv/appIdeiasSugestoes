@@ -8,12 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portal de ideias e sugestões</title>
 
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{{ asset('AdminLTE/bower_components/Ionicons/css/ionicons.min.css') }}">
     <!-- Bootstrap 4.2.1-->
     <!-- <link rel="stylesheet" href="bootstrap-4.2.1/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <style>
+        .row{
+            margin-left: 0;
+            margin-right: 0;
+        }
         .secao-destaque{
             background: url({{ asset('/img/bg-topo.png') }}) no-repeat;
             background-size: cover;
@@ -30,6 +36,13 @@
         .logo-top{
             width: 40%;
             height: 40%;
+        }
+        .img-card{
+            width: auto;
+            height: 40%;
+        }
+        .card-shadow{
+            box-shadow: 0px 0px 1px #2b542c;
         }
 
     </style>
@@ -152,6 +165,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
     </script>
+    <!-- icons fontawesome-->
+    <script src="https://kit.fontawesome.com/1d55f735c2.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

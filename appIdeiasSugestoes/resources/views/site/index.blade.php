@@ -2,26 +2,58 @@
 
 @section('content')
 
-<section class="passo-passo container">
-    <div class="row pt-5 pb-5">
-        <div class="col-12 col-lg-4 text-center pt-5 pb-5">
-            <img class="image-fluide" src="{{ asset('/img/icon1.png') }}" alt="">
-            <h5 class="pt-4">Passo 1</h5>
-            <p>Cadastre-se no portal, para criar seu login de acesso.
-            </p>
+<section class="passo-passo container pt-5 pb-5">
+    <div class="card-deck">
+
+        <div class="card card-shadow">
+            <div class="icon text-center">
+                <i class="fa  fa-file-text fa-7x " style="color:green"></i>
+            </div>
+            <!--
+            <img class="card-img-top img-card" src="{{ asset('/img/icon1.png') }}" alt="Card image cap">
+            -->
+            <div class="card-body">
+                <h5 class="card-title">1° Passo</h5>
+                <p class="card-text">Cadastre-se no portal, para criar seu login de acesso.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Cadastre-se</small>
+            </div>
         </div>
-        <div class="col-12 col-lg-4 text-center pt-5 pb-5">
-            <img class="image-fluide" src="{{ asset('/') }}img/icon2.png" alt="">
-            <h5 class="pt-4">Passo 2</h5>
-            <p>Registre sua ideia ou sugestão pelo formulário.
-            </p>
+
+        <div class="card card-shadow">
+            <div class="icon text-center">
+                <i class="fa fa-desktop fa-7x " style="color:green"></i>
+            </div>
+            <!--
+            <img class="card-img-top img-card" src="{{ asset('/') }}img/icon2.png" alt="Card image cap">
+            -->
+            <div class="card-body">
+                <h5 class="card-title">2° Passo</h5>
+                <p class="card-text">Registre sua ideia ou sugestão pelo formulário.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Registrar sugestão</small>
+            </div>
         </div>
-        <div class="col-12 col-lg-4 text-center pt-5 pb-5">
-            <img class="image-fluide" src="{{ asset('/') }}img/icon3.png" alt="">
-            <h5 class="pt-4">Passo 3</h5>
-            <p>Aguarde a avaliação da sua ideia ou sugestão, receberá um e-mail de confirmação.</p>
+
+        <div class="card card-shadow">
+            <div class="icon text-center">
+                <i class="fa  fa-thumbs-up fa-7x " style="color:green"></i>
+            </div>
+            <!--
+            <img class="card-img-top img-card" src="{{ asset('/') }}img/icon3.png" alt="Card image cap">
+            -->
+            <div class="card-body">
+                <h5 class="card-title">3° Passo</h5>
+                <p class="card-text">Aguarde a avaliação da sua ideia ou sugestão, receberá um e-mail de confirmação.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Aguarde avaliação</small>
+            </div>
         </div>
     </div>
+
 </section>
 
 <section>

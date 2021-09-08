@@ -9,7 +9,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Tabela de Usuários</h3>
+                        <h3 class="box-title">Tabela de Sugestões</h3>
 
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -25,31 +25,31 @@
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
+                                <th>Cód</th>
+                                <th>Título</th>
+                                <th>Descrição</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
                                 <th>Data Criação</th>
-                                <th>E-mail</th>
+                                <th>Data Aprovação</th>
+                                <th>Servidor</th>
                                 <th>Ação</th>
                             </tr>
-                            @foreach ($usuarios as $usuario)
+                            @foreach ($sugestoes as $sugestao)
                                 <tr>
-                                    <td>{{ $usuario->id }}</td>
-                                    <td>{{ $usuario->name }}</td>
-                                    <td>{{ $usuario->created_at->diffForHumans() }}</td>
-                                    <td>{{ $usuario->email }}</td>
+                                    <td>{{ $sugestao->id }}</td>
+                                    <td>{{ $sugestao->titulo}}</td>
+                                    <td>{{ $sugestao->tipo }}</td>
+                                    <td>{{ $sugestao->status }}</td>
+                                    <td>{{ $sugestao->created_at->diffForHumans() }}</td>
+                                    <td>{{ $sugestao->data_aprovacao->diffForHumans() }}</td>
+                                    <td>Usuário</td>
                                     <td>
                                         <a class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                         <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Data Criação</th>
-                                <th>E-mail</th>
-                                <th>Ação</th>
-                            </tr>
                             
                         </table>
                     </div>

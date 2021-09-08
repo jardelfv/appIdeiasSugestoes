@@ -14,12 +14,12 @@ class PainelController extends Controller
      * @return void
      */
     public $request;
-    public $usuarios;
-    public function __construct(Request $request, User $usuarios)
+    public $user;
+    public function __construct(Request $request, User $user)
     {
         $this->middleware('auth');
         $this->request = $request;
-        $this->usuarios = $usuarios;
+        $this->$user = $user;
     }
 
     /**
@@ -33,7 +33,7 @@ class PainelController extends Controller
         $user = Auth()->User();
         return view('Painel.index', compact('user'));
     }
-
+/*
     public function viewUsuarios()
     {
         // requer que o usuário esteja autenticado
@@ -48,4 +48,20 @@ class PainelController extends Controller
 
         return view('Painel.Usuarios.index', compact('user', 'urlAtual', 'usuarios'));
     }
+
+    public function viewSugestoes()
+    {
+        // requer que o usuário esteja autenticado
+        $user = Auth()->User();
+        // para descobrir a uri atual e pegar a segunda posição
+        $uri = $this->request->route()->uri();
+        $exploder = explode('/', $uri);
+        $urlAtual = $exploder[1];
+
+        // laravel consulta all na tabela de usuários
+        $usuarios = $this->usuarios->all();
+
+        return view('Painel.Sugestoes.index', compact('user', 'urlAtual', 'usuarios'));
+    }
+*/
 }

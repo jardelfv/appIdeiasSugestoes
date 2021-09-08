@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-teal">
+                <div class="small-box bg-green">
                     <div class="inner">
                         @inject('usuarios', 'App\User')
                         <h3>{{ $usuarios->count() }}</h3>
@@ -17,7 +17,20 @@
                     <div class="icon">
                         <i class="fa fa-users"></i>
                     </div>
-                    <a href="{{ route('Painel.Usuarios.index') }}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('Painel.users.listAllUsers') }}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+
+                <div class="small-box bg-orange">
+                    <div class="inner">
+                        @inject('sugestoes', 'App\Sugestao')
+                        <h3>{{ $sugestoes->count() }}</h3>
+
+                        <p>Sugestões e ideias</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <a href="{{ route('Painel.sugestoes.listAllSugestoes') }}" class="small-box-footer">Administrar <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
