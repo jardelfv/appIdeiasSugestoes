@@ -41,6 +41,10 @@
             width: auto;
             height: 40%;
         }
+        .img-conteudo{
+            width: 70%;
+            height: auto;
+        }
         .card-shadow{
             box-shadow: 0px 0px 1px #2b542c;
         }
@@ -62,7 +66,8 @@
                 <div class="col-12 col-lg-6">
                     <nav>
                         <ul class="nav justify-content-end">
-
+                            <li class="list-item"><a href="{{ route('site.home') }}"
+                                                     class="nav-link text-white">Home</a></li>
                             @if (Route::has('login'))
 
                                     @if (Auth::check())

@@ -7,7 +7,7 @@
 
         <div class="card card-shadow">
             <div class="icon text-center">
-                <i class="fa  fa-file-text fa-7x " style="color:green"></i>
+                <i class="fa  fa-file-text fa-5x " style="color:green"></i>
             </div>
             <!--
             <img class="card-img-top img-card" src="{{ asset('/img/icon1.png') }}" alt="Card image cap">
@@ -23,7 +23,7 @@
 
         <div class="card card-shadow">
             <div class="icon text-center">
-                <i class="fa fa-desktop fa-7x " style="color:green"></i>
+                <i class="fa fa-desktop fa-5x " style="color:green"></i>
             </div>
             <!--
             <img class="card-img-top img-card" src="{{ asset('/') }}img/icon2.png" alt="Card image cap">
@@ -39,7 +39,7 @@
 
         <div class="card card-shadow">
             <div class="icon text-center">
-                <i class="fa  fa-thumbs-up fa-7x " style="color:green"></i>
+                <i class="fa  fa-thumbs-up fa-5x " style="color:green"></i>
             </div>
             <!--
             <img class="card-img-top img-card" src="{{ asset('/') }}img/icon3.png" alt="Card image cap">
@@ -61,40 +61,18 @@
         <div class="container pt-4 pb-4">
             <div class="row">
                 <div class="col-12 col-lg-7 align-self-center">
-                    <!-- <img class="image-fluide" src="img/image1.png" alt=""> -->
-                    <h3>Formulário de ideia ou sugestão</h3>
-                    <p class="lead">
-                        Preencha os dados do formulário e nos envie. Aguarde o e-mail de confirmação.
-                    </p>
-
-                    <form action="" class="row">
-                        <div class="col-12 col-lg-8 pl-0">
-                            <label for="formSugestao" class="form-label">Nome completo</label>
-                            <input type="text" class="form-control" id="formSugestao">
-                            
-                            <label for="formSugestao" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="formSugestao" aria-describedby="emailHelp">
-
-                            <label for="formSugestao" class="form-label">Ideia ou Sugestão</label>
-                            <textarea class="form-control" id="formSugestao">Texto aqui</textarea>
-                            
-                            <br>
-                            <button type="submit" class="btn btn-success">Enviar</button>
-                        
-                        </div>
-                    </form>
+                    <img class="img-conteudo" src="{{ asset('img/ideias.jpg') }}" alt="Card image cap">
                 </div>
                 <div class="col-12 col-lg-5 align-self-xs-center">
                     <h3>Registre sua ideia ou sugestão</h3>
                     <p class="lead">
-                        Preencha os dados do formulário e nos envie. Aguarde o e-mail de confirmação.
+                        Faça o login no portal ou registre seu acesso. Preencha os dados do cadastro de sugestões e nos envie.
+                        Aguarde o e-mail de confirmação.
                     </p>
                     <ul>
-                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>A sugestão dada impacta diretamente de 1 até 10 pessoas: 2 dias úteis de folga.</li>
+                        <li>A sugestão dada impacta diretamente de 11 até 50 pessoas: 3 dias úteis de folga.</li>
+                        <li>A sugestão dada impacta diretamente 51 pessoas ou mais: 5 dias úteis de folga.</li>
                     </ul>
                 </div>
             </div>
