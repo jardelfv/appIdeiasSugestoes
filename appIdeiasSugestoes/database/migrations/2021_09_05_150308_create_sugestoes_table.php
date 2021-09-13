@@ -13,6 +13,7 @@ class CreateSugestoesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('sugestoes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user');
@@ -20,9 +21,12 @@ class CreateSugestoesTable extends Migration
             $table->text('descricao');
             $table->unsignedBigInteger('status');
             $table->string('tipo');
-            $table->string('data_aprovacao');
+            $table->string('data_aprovacao')->nullable();
             $table->timestamps();
+            $table->foreign('user')->references('id')->on('users');
         });
+
+
     }
 
     /**

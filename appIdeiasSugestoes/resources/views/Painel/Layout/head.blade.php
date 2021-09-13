@@ -35,4 +35,10 @@
   
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        .img-logo-sidebar{
+            width: 90%;
+            height: 90%;
+        }
+    </style>
   </head>

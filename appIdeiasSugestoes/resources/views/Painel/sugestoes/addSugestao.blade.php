@@ -10,7 +10,7 @@
                 <br>
                 <form action="{{ route('Painel.sugestoes.storeSugestao') }}" method="post">
                     {{ csrf_field() }}
-
+                    <!-- <input type="text" class="form-control" name="titulo" value="" placeholder="Título da sua ideia ou sugestão"> -->
                     <div class="form-group row">
                         <label class="col-sm-1 col-form-label">Título</label>
                         <div class="col-sm-6">

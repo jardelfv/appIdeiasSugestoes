@@ -8,7 +8,7 @@ class Sugestao extends Model
 {
     protected $table = 'sugestoes';
 
-    public function user(){
+    public function userSugestao(){
         // caminho de volta para consulta
         return $this->belongsTo(User::class, 'user', 'id');
     }

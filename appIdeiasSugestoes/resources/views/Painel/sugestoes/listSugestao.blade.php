@@ -13,6 +13,7 @@
 
                     <div class="box-body table-responsive no-padding">
                         <p>Codigo: {{ $sugestao->id }}</p>
+                        <p><strong>Autor: {{ $sugestao->userSugestao->name }}</strong></p>
                         <p>Título: {{ $sugestao->titulo }}</p>
                         <p>Descrição: {{ $sugestao->descricao }}</p>
                         <p>Tipo: {{ $sugestao->tipo }}</p>

@@ -24,7 +24,7 @@
                     <div class="form-group row">
                         <label class="col-sm-1 col-form-label">Senha</label>
                         <div class="col-sm-3">
-                            <input type="password" class="form-control" name="password" value="{{ $user->password }}" placeholder="Senha">
+                            <input type="password" class="form-control" name="password"  placeholder="Senha">
                         </div>
                     </div>
 

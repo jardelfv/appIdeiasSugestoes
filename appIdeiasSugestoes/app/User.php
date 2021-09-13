@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function sugestoes(){
+    public function sugestoesUsers(){
         // um para muitos, um usuário tem várias sugestões
         return $this->hasMany(Sugestao::class, 'user', 'id');
     }

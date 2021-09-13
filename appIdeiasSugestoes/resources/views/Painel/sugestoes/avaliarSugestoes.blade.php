@@ -43,10 +43,11 @@
                                     <td>{{ $sugestao->status }}</td>
                                     <td>{{ date('d/m/Y H:i', strtotime($sugestao->created_at)) }}</td>
                                     <td>{{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}</td>
-                                    <td>Usuário</td>
+                                    <td>{{ $sugestao->userSugestao->name }}</td>
                                     <td>
-                                        <a class="btn btn-success"><i class="fa fa-check"></i></a>
-                                        <input type="submit" value="Rejeitar" class="btn btn-danger">
+                                        <a class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Aprovar"><i class="fa fa-thumbs-o-up"></i></a>
+                                        <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Rejeitar"><i class="fa fa-thumbs-o-down"></i></a>
+                                        <!-- <input type="submit" value="Rejeitar" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Rejeitar"> -->
                                     </td>
                                 </tr>
                             @endforeach

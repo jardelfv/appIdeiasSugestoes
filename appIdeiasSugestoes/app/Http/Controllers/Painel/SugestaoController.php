@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SugestaoController extends Controller
@@ -58,6 +59,7 @@ class SugestaoController extends Controller
      */
     public function addSugestao(){
         $sugestao = new Sugestao();
+
         return view('Painel.sugestoes.addSugestao', [
             'sugestao'=> $sugestao
         ]);
@@ -71,8 +73,10 @@ class SugestaoController extends Controller
      */
     public function storeSugestao(Request $request)
     {
+        //$user = User::where('id', $id)->first();
         $sugestao = new Sugestao();
-        //$sugestao->user()->id = 1;
+        $sugestao->user = Auth::user()->id;
+        $sugestao->data_aprovacao = null;
         $sugestao->titulo = $request->titulo;
         $sugestao->descricao = $request->descricao;
         $sugestao->tipo = $request->tipo;

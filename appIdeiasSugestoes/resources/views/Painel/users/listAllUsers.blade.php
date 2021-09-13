@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-xs-12">
-                <h2 class="box-title">Tabela de Usuários</h2>
+                <h2 class="box-title">Usuários Cadastrados</h2>
                 <div class="box">
                     <div class="box-header">
 
@@ -38,13 +38,37 @@
                                     <td>{{ $user->created_at->diffForHumans() }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <a class="btn btn-success" href="{{ route('Painel.users.listUser', ['user' => $user->id]) }}"><i class="fa fa-info"></i></a>
-                                        <a class="btn btn-warning" href="{{ route('Painel.users.editUser', ['user' => $user->id]) }}"><i class="fa fa-edit"></i></a>
+                                        <div  aria-label="Botões de ação">
+                                            <a class="btn btn-success" href="{{ route('Painel.users.listUser', ['user' => $user->id]) }}" data-toggle="tooltip" data-placement="top" title="Ver detalhes"><i class="fa fa-info"></i></a>
+                                            <a class="btn btn-warning" href="{{ route('Painel.users.editUser', ['user' => $user->id]) }}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></a>
+                                            <input type="submit" value="Del" class="btn btn-danger" data-toggle="tooltip" data-target="#deleteModal" data-placement="top" title="Deletar">
+                                        </div>
+
+                                        <!-- Modal -->
                                         <form action="{{ route('Painel.users.destroy', ['user' => $user->id]) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}
-                                            <input type="submit" value="Del" class="btn btn-danger">
+                                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel">Excluir</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h2><strong>Atenção!</strong> Você tem certeza que deseja excluir?</h2>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                            <button type="submit" class="btn btn-danger">Sim Deletar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
+                                        <!-- /Modal -->
                                     </td>
                                 </tr>
                             @endforeach
