@@ -38,6 +38,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('matricula') ? ' has-error' : '' }}">
+                            <label for="matricula" class="col-md-4 control-label">Matrícula</label>
+
+                            <div class="col-md-6">
+                                <input id="matricula" type="number" class="form-control" name="matricula" value="{{ old('matricula') }}" required autofocus>
+
+                                @if ($errors->has('matricula'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('matricula') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Senha</label>
 

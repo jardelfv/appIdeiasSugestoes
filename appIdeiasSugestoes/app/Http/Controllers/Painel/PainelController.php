@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel;
 
+use App\Sugestao;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -31,7 +32,13 @@ class PainelController extends Controller
     {
         // requer que o usuário esteja autenticado
         $user = Auth()->User();
-        return view('Painel.index', compact('user'));
+        $sugestoes = Sugestao::all();
+
+
+
+            return view('Painel.sugestoes.minhasSugestoes', compact('sugestoes'));
+
+
     }
 /*
     public function viewUsuarios()

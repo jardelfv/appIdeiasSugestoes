@@ -45,6 +45,17 @@
         <!-- ./wrapper -->
         @includeIf('Painel.Layout.javascript')
 
+        <script>
+            $('#modal-danger').on('show.bs.modal', function (event){
+                let button = $(event.relatedTarget); // despara o modal
+                let recipientId = button.data('id');
+                console.log(recipientId);
+
+                let modal = $(this);
+                modal.find('#sugestao_id').val(recipientId);
+            })
+        </script>
+
     </body>
 
 </html>

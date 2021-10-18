@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Painel;
 
+use App\Mail\novaSugestao;
 use App\Sugestao;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class SugestaoController extends Controller
 {
@@ -33,14 +36,38 @@ class SugestaoController extends Controller
     {
         $sugestoes = Sugestao::all();
 
+
         return view('Painel.sugestoes.listAllSugestoes', [
             'sugestoes' =>$sugestoes
         ]);
     }
 
     public function listSugestao(Sugestao $sugestao){
+        $comum = 'comum';
+        $admin = 'admin';
+
+        if(Auth::user()->tipo == $admin){
+            $this->authorize('user-admin', $sugestao);
+        }elseif (Auth::user()->tipo == $comum){
+            $this->authorize('user-comum', $sugestao);
+        }else{
+
+        }
+
         return view('Painel.sugestoes.listSugestao', [
             'sugestao'=> $sugestao
+        ]);
+    }
+
+    public function minhasSugestoes(){
+        $comum = 'comum';
+        $admin = 'admin';
+        $sugestoes = Sugestao::all();
+        //$sugestoes = $aux->where('id', '=', Auth::user()->id);
+
+
+        return view('Painel.sugestoes.minhasSugestoes', [
+            'sugestoes'=> $sugestoes
         ]);
     }
 
@@ -74,6 +101,9 @@ class SugestaoController extends Controller
     public function storeSugestao(Request $request)
     {
         //$user = User::where('id', $id)->first();
+        $user = Auth::user();
+        //dd(env('MAIL_USERNAME'));
+        //var_dump($user);
         $sugestao = new Sugestao();
         $sugestao->user = Auth::user()->id;
         $sugestao->data_aprovacao = null;
@@ -83,6 +113,8 @@ class SugestaoController extends Controller
         $sugestao->status = $request->status;
 
         $sugestao->save();
+
+        Mail::to($user->email)->send(new novaSugestao(Auth::user()));
 
         return redirect()->route('Painel.sugestoes.listAllSugestoes');
     }
@@ -148,6 +180,14 @@ class SugestaoController extends Controller
 
         return redirect()->route('Painel.sugestoes.listAllSugestoes');
     }
+    public  $sugestao_id;
+    public function delete(Request $request, $id){
 
+        $id = $request['sugestao_id'];
+        $sugestao = $this->sugestao->find(id);
+        $sugestao->delete();
+
+        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+    }
 
 }

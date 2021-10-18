@@ -6,7 +6,7 @@
         <div class="row">
 
             <div class="col-xs-12">
-                <h2>Cadastrar sugestão ou ideia</h2>
+                <h2><i class="fa fa-lightbulb-o"></i> Cadastrar sugestão ou ideia</h2>
                 <br>
                 <form action="{{ route('Painel.sugestoes.storeSugestao') }}" method="post">
                     {{ csrf_field() }}

@@ -21,6 +21,14 @@
                             <input type="email" class="form-control" name="email" value="{{ $user->email }}" placeholder="Email">
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-1 col-form-label">Tipo de usuário</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="tipo" value="{{ $user->tipo }}" placeholder="Tipo de usuário">
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-sm-1 col-form-label">Senha</label>
                         <div class="col-sm-3">

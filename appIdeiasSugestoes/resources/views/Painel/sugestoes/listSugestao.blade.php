@@ -10,7 +10,7 @@
                     <div class="box-header">
 
                     </div>
-
+                    
                     <div class="box-body table-responsive no-padding">
                         <p>Codigo: {{ $sugestao->id }}</p>
                         <p><strong>Autor: {{ $sugestao->userSugestao->name }}</strong></p>

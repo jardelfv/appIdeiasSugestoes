@@ -45,10 +45,25 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->matricula = $request->matricula;
+        $user->tipo = $request->tipo;
         $user->password = Hash::make($request->password);
         $user->save();
 
         return redirect()->route('Painel.users.listAllUsers');
+    }
+
+    public function addUserDefault(Request $request){
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->matricula = $request->matricula;
+        $user->tipo = $request->tipo;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+
     }
 
     public function editUser(User $user){

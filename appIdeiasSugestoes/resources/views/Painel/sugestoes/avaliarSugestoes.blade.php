@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-xs-12">
-                <h2 class="box-title">Avaliar Sugestões</h2>
+                <h2 class="box-title"><i class="fa fa-legal"></i> Avaliar Sugestões</h2>
                 <div class="box">
                     <div class="box-header">
                         <div class="box-tools">

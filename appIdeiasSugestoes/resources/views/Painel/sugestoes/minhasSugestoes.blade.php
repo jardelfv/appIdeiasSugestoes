@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-xs-12">
-                <h2 class="box-title"><i class="fa fa-tags"></i>Todas as Sugestões</h2>
+                <h2 class="box-title"><i class="fa fa-tags"></i>Minhas Sugestões</h2>
                 <div class="box">
                     <div class="box-header">
                         <div class="box-tools">
@@ -35,6 +35,7 @@
                                 <th>Ação</th>
                             </tr>
                             @foreach ($sugestoes as $sugestao)
+                                @can('minhas-sugestoes', $sugestao)
                                 <tr>
                                     <td>{{ $sugestao->id }}</td>
                                     <td>{{ $sugestao->titulo}}</td>
@@ -47,12 +48,14 @@
                                     <td>
                                         <div aria-label="Botões de ação">
                                             <a class="btn btn-success" href="{{ route('Painel.sugestoes.listSugestao', ['sugestao' => $sugestao->id]) }}" data-toggle="tooltip" data-placement="top" title="Ver detalhes"><i class="fa fa-info"></i></a>
+                                            @can('user-admin', $sugestao)
                                             <a class="btn btn-warning" href="{{ route('Painel.sugestoes.editSugestao', ['sugestao' => $sugestao->id]) }}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></a>
                                             <!-- <input type="submit" value="Del" class="btn btn-danger" data-toggle="tooltip" data-target="#deleteModal" data-toggle="tooltip" data-placement="top" title="Deletar"> -->
                                             <input type="hidden" name="sugestao_id" id="sugestao_id" value="" data-id="{{ $sugestao->id }}">
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" data-id="{{ $sugestao->id }}">
                                                 Del
                                             </button>
+                                            @endcan
                                         </div>
 
                                         <!-- Modal -->
@@ -89,6 +92,7 @@
 
                                     </td>
                                 </tr>
+                                @endcan
                             @endforeach
                             
                         </table>
