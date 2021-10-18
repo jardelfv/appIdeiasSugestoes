@@ -33,11 +33,12 @@ class PainelController extends Controller
         // requer que o usuário esteja autenticado
         $user = Auth()->User();
         $sugestoes = Sugestao::all();
-
-
-
+        $admin = 'admin';
+        if($user->tipo == $admin){
+            return view('Painel.index', compact('user'));
+        }else{
             return view('Painel.sugestoes.minhasSugestoes', compact('sugestoes'));
-
+        }
 
     }
 /*
