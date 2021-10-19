@@ -6,6 +6,7 @@ use App\Mail\novaSugestao;
 use App\Sugestao;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
@@ -67,6 +68,18 @@ class SugestaoController extends Controller
 
 
         return view('Painel.sugestoes.minhasSugestoes', [
+            'sugestoes'=> $sugestoes
+        ]);
+    }
+
+    public function implantadas(){
+        $comum = 'comum';
+        $admin = 'admin';
+        //$sugestoes = DB::table('sugestoes')->where('status', '=', '3');
+        //$sugestoes = DB::select('select * from sugestoes where status = :status', ['status' => 1]);
+        $sugestoes = Sugestao::where('status', '3')->get();
+
+        return view('Painel.sugestoes.implantadas', [
             'sugestoes'=> $sugestoes
         ]);
     }

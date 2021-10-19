@@ -95,7 +95,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <h2 class="pt-5 pb-3">Você tem uma idéia inovadora ou uma sugestão?</h2>
+                    <h2 class="pt-5 pb-3">Você tem uma ideia inovadora ou uma sugestão?</h2>
                     <p class="pb-3">Para isso criamos um portal, um local para apresentar suas ideias inovadoras
                         e como elas podem agregar à nossa administração pública.
                         E você ainda ganha um prêmio/benefício caso implantada.</p>

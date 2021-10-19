@@ -1,40 +1,46 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+    <img src="http://prefeitura.jfvcloud.com/portal_de_ideias/appIdeiasSugestoes/public/img/Novo%20Logo%20verde.png"> 
+    <img src="https://doity.com.br/media/doity/eventos/evento-1418-logo_organizador.jpeg">
 </p>
 
-## About Laravel
+<p align="center">
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+<a href="#"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Sobre o projeto Portal de ideias e sugestões
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Este projeto foi idealizado pelo Secretário de Gestão Pública, Maikon Freitas, coordenado pelo Diretor Departamento de Tecnologia da Informação, Jonatan Souza Albernaz. 
+Onde o Jonatan buscou uma parceria com o IFTM campus Paracatu para captar programadores e solucionar o projeto proposto. 
 
-## Learning Laravel
+## Projeto e problema proposto
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+A necessidade de um sistema para registrar e controlar os dados das sugestões implantadas ou não.
+O servidor público entra com um usuário e senha para registrar sua sugestão.
+Caso a ideia for implantada o servidor público recebe uma gratificação ou benefício de acordo com o peso da sugestão.
+O gestor entra no sistema para aprovar ou rejeitar a sugestão.
+Colhendo os benefícios de boas ideias sendo implantadas melhorando o setor público e incentivando os servidores públicos com gratificações.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+## Integrantres do projeto
 
-## Contributing
+- Maikon Freitas - Secretário de Gestão Pública | Idealizador.
+- Jonatan Souza Albernaz - Diretor Departamento de Tecnologia da Informação | Coordenador.
+- Danilo Almeida  [Professor](https://github.com/dsalinux) | Orientador.
+- Jardel Franco Vasconcelos [Analista de Sistemas](https://jardel.dev/) | Programador.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+Este projeto foi desenvolvido com:
+- Laravel 5.6.
+- MySQL 5.7.31
+- PHP 5.6
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Como implantar
+
+Em construção...
+
+
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+O Portal de ideias e sugestões e  open-source! Você pode usar desde que matenha os creditos do desenvolvedor. 
+Software licenciado por [MIT license](http://opensource.org/licenses/MIT).

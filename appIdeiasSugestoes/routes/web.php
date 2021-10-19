@@ -34,6 +34,7 @@ Route::delete('/Painel/usuario/destroy/{user}', 'Painel\UserController@destroy')
 
 Route::get('/Painel/sugestao', 'Painel\SugestaoController@listAllSugestoes')->name('Painel.sugestoes.listAllSugestoes');
 Route::get('/Painel/sugestao/listar', 'Painel\SugestaoController@minhasSugestoes')->name('Painel.sugestoes.minhasSugestoes');
+Route::get('/Painel/sugestao/implantadas', 'Painel\SugestaoController@implantadas')->name('Painel.sugestoes.implantadas');
 Route::get('/Painel/sugestao/avaliar', 'Painel\SugestaoController@avaliarSugestoes')->name('Painel.sugestoes.avaliarSugestoes');
 Route::get('/Painel/sugestao/cadastrar', 'Painel\SugestaoController@addSugestao')->name('Painel.sugestoes.addSugestao');
 Route::get('/Painel/sugestao/editar/{sugestao}', 'Painel\SugestaoController@editSugestao')->name('Painel.sugestoes.editSugestao');
