@@ -105,6 +105,14 @@ class SugestaoController extends Controller
         ]);
     }
 
+    public function novaSugestao(){
+        $sugestao = new Sugestao();
+
+        return view('Painel.sugestoes.novaSugestao', [
+            'sugestao'=> $sugestao
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

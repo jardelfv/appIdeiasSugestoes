@@ -31,6 +31,7 @@ Route::post('/Painel/usuario/cadastrousuariocomum', 'Painel\UserController@addUs
 Route::put('/Painel/usuario/edit/{user}', 'Painel\UserController@edit')->name('Painel.users.edit');
 Route::delete('/Painel/usuario/destroy/{user}', 'Painel\UserController@destroy')->name('Painel.users.destroy');
 
+Route::get('/Painel/sugestao/envio', 'Painel\SugestaoController@novaSugestao')->name('Painel.sugestoes.novaSugestao');
 
 Route::get('/Painel/sugestao', 'Painel\SugestaoController@listAllSugestoes')->name('Painel.sugestoes.listAllSugestoes');
 Route::get('/Painel/sugestao/listar', 'Painel\SugestaoController@minhasSugestoes')->name('Painel.sugestoes.minhasSugestoes');
@@ -70,4 +71,4 @@ Route::get('/cadastro', function () {
 })->name('site.cadastro');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');

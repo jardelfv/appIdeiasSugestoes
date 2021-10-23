@@ -81,10 +81,26 @@ class RegisterController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->name = $request->matricula;
-        $user->name = "comum";
+        $user->matricula = $request->matricula;
+        $user->tipo = "comum";
         $user->password = Hash::make($request->password);
         $user->save();
+
+
+    }
+    public function register(Request $request){
+        if($request->input('matricula') == 3){
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->matricula = $request->matricula;
+            $user->tipo = "comum";
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }else{
+
+        }
+
 
 
     }
