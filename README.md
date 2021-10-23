@@ -36,7 +36,7 @@ Este projeto foi desenvolvido com:
 
 ## Como implantar
 
-Em construção...
+Em teste de construção...
 
 
 
