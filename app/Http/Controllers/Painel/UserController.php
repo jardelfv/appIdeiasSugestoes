@@ -19,6 +19,18 @@ class UserController extends Controller
         $this->$user = $user;
     }
 
+    protected function create(array $data)
+    {
+
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'matricula' => $data['matricula'],
+
+        ]);
+    }
+
     public function listAllUsers(){
         $users = User::all();
 

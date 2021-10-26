@@ -27,6 +27,22 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public $rules = [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'matricula' => 'required|exists:matriz_matriculas,matricula',
+            'password' => 'required|min:6|confirmed',
+        ];
+
+
+    public $messages = [
+            'name.required' => 'O campo nome é obrigatório.',
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'matricula.required' => 'O campo matrícula é obrigatório.',
+            'matricula.exists' => 'Matricula não encontrada.',
+            'password.required' => 'O campo senha é obrigatório.',
+        ];
+
     public function sugestoesUsers(){
         // um para muitos, um usuário tem várias sugestões
         return $this->hasMany(Sugestao::class, 'user', 'id');

@@ -31,6 +31,9 @@ Route::post('/Painel/usuario/cadastrousuariocomum', 'Painel\UserController@addUs
 Route::put('/Painel/usuario/edit/{user}', 'Painel\UserController@edit')->name('Painel.users.edit');
 Route::delete('/Painel/usuario/destroy/{user}', 'Painel\UserController@destroy')->name('Painel.users.destroy');
 
+Route::get('/registrar/form', 'Auth\RegisterController@registrationForm')->name('registrationForm');
+Route::post('/registrar', 'Auth\RegisterController@store')->name('auth.registrar');
+
 Route::get('/Painel/sugestao/envio', 'Painel\SugestaoController@novaSugestao')->name('Painel.sugestoes.novaSugestao');
 
 Route::get('/Painel/sugestao', 'Painel\SugestaoController@listAllSugestoes')->name('Painel.sugestoes.listAllSugestoes');
