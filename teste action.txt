@@ -1,2 +1,7 @@
 testando action deploy
+<<<<<<< HEAD
 testando action deploy servidor de testes
+=======
+testando action deploy servidor de testes
+testando action deploy servidor de testes2
+>>>>>>> tester
