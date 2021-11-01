@@ -3,6 +3,8 @@
 @section('content')
 
     <section class="content">
+        <!-- breadcrumbs -->
+        @include('Painel._caminho')
         <div class="row">
             <div class="col-xs-12">
                 <h2>Detalhes da Sugestão</h2>

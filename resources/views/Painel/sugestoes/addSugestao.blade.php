@@ -3,8 +3,9 @@
 @section('content')
 
     <section class="content">
+        <!-- breadcrumbs -->
+        @include('Painel._caminho')
         <div class="row">
-
             <div class="col-xs-12">
                 <h2><i class="fa fa-lightbulb-o"></i> Cadastrar sugestão ou ideia</h2>
                 <br>

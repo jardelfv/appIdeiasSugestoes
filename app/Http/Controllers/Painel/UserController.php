@@ -34,14 +34,29 @@ class UserController extends Controller
     public function listAllUsers(){
         $users = User::all();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Usuários Cadastrados'],
+        ];
+
         return view('Painel.users.listAllUsers', [
-            'users'=> $users
+            'users'=> $users,
+            'caminhos'=> $caminhos,
         ]);
     }
 
     public function listUser(User $user){
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'/Painel/usuario/', 'titulo'=>'Usuário'],
+            ['url'=>'', 'titulo'=>'Detalhes Usuário'],
+        ];
+
         return view('Painel.users.listUser', [
-            'user'=> $user
+            'user'=> $user,
+            'caminhos'=> $caminhos,
         ]);
     }
 

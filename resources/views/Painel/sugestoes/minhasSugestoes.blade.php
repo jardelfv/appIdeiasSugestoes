@@ -3,9 +3,10 @@
 @section('content')
     <!-- Main content -->
     <section class="content">
+        <!-- breadcrumbs -->
+        @include('Painel._caminho')
         <!-- Small boxes (Stat box) -->
         <div class="row">
-
             <div class="col-xs-12">
                 <h2 class="box-title"><i class="fa fa-tags"></i>Minhas Sugestões</h2>
                 <div class="box">

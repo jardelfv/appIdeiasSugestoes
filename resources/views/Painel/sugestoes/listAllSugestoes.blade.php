@@ -4,8 +4,8 @@
     <!-- Main content -->
     <section class="content">
         <!-- Small boxes (Stat box) -->
+        @include('Painel._caminho')
         <div class="row">
-
             <div class="col-xs-12">
                 <h2 class="box-title"><i class="fa fa-tags"></i>Todas as Sugestões</h2>
                 <div class="box">

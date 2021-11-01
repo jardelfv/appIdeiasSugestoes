@@ -3,11 +3,14 @@
 @section('content')
 
     <section class="content">
+        <!-- breadcrumbs -->
+        @include('Painel._caminho')
         <div class="row">
             <div class="col-xs-12">
+                <h2 class="box-title">Detalhes do Usuários</h2>
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Detalhes do Usuários</h3>
+
                     </div>
 
                     <div class="box-body table-responsive no-padding">

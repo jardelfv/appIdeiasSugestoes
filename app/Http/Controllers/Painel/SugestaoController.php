@@ -37,15 +37,28 @@ class SugestaoController extends Controller
     {
         $sugestoes = Sugestao::all();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Listar Sugestões'],
+        ];
 
         return view('Painel.sugestoes.listAllSugestoes', [
-            'sugestoes' =>$sugestoes
+            'sugestoes' =>$sugestoes,
+            'caminhos' =>$caminhos,
         ]);
     }
 
     public function listSugestao(Sugestao $sugestao){
         $comum = 'comum';
         $admin = 'admin';
+
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'/Painel/sugestao/listar', 'titulo'=>'Listar Sugestões'],
+            ['url'=>'', 'titulo'=>'Detalhes Sugestão'],
+        ];
 
         if(Auth::user()->tipo == $admin){
             $this->authorize('user-admin', $sugestao);
@@ -56,7 +69,8 @@ class SugestaoController extends Controller
         }
 
         return view('Painel.sugestoes.listSugestao', [
-            'sugestao'=> $sugestao
+            'sugestao'=> $sugestao,
+            'caminhos' =>$caminhos,
         ]);
     }
 
@@ -66,9 +80,15 @@ class SugestaoController extends Controller
         $sugestoes = Sugestao::all();
         //$sugestoes = $aux->where('id', '=', Auth::user()->id);
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Minhas Sugestões'],
+        ];
 
         return view('Painel.sugestoes.minhasSugestoes', [
-            'sugestoes'=> $sugestoes
+            'sugestoes'=> $sugestoes,
+            'caminhos' =>$caminhos,
         ]);
     }
 
@@ -79,16 +99,30 @@ class SugestaoController extends Controller
         //$sugestoes = DB::select('select * from sugestoes where status = :status', ['status' => 1]);
         $sugestoes = Sugestao::where('status', '3')->get();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Sugestões Implantadas'],
+        ];
+
         return view('Painel.sugestoes.implantadas', [
-            'sugestoes'=> $sugestoes
+            'sugestoes'=> $sugestoes,
+            'caminhos' =>$caminhos,
         ]);
     }
 
     public function avaliarSugestoes(){
         $sugestoes = Sugestao::all();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Avaliar Sugestões'],
+        ];
+
         return view('Painel.sugestoes.avaliarSugestoes', [
-            'sugestoes' =>$sugestoes
+            'sugestoes' =>$sugestoes,
+            'caminhos' =>$caminhos,
         ]);
     }
 
@@ -100,8 +134,15 @@ class SugestaoController extends Controller
     public function addSugestao(){
         $sugestao = new Sugestao();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Cadastrar Sugestões'],
+        ];
+
         return view('Painel.sugestoes.addSugestao', [
-            'sugestao'=> $sugestao
+            'sugestao'=> $sugestao,
+            'caminhos' =>$caminhos,
         ]);
     }
 
