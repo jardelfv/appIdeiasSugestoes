@@ -40,9 +40,26 @@
                                     <td>{{ $sugestao->titulo}}</td>
                                     <td>{{ $sugestao->descricao}}</td>
                                     <td>{{ $sugestao->tipo }}</td>
-                                    <td>{{ $sugestao->status }}</td>
+                                    <td>
+                                        @if($sugestao->status == 1)
+                                            aprovado!
+                                        @elseif($sugestao->status == 2)
+                                            reprovado...
+                                        @elseif($sugestao->status == 3)
+                                            em avaliação de viabilidade...
+                                        @else
+                                            aguardando...
+                                        @endif
+                                    </td>
                                     <td>{{ date('d/m/Y H:i', strtotime($sugestao->created_at)) }}</td>
-                                    <td>{{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}</td>
+                                    <td>
+                                        @if($sugestao->data_aprovacao == null && $sugestao->status =! 2)
+                                            ...
+                                        @else
+                                            {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}
+
+                                        @endif
+                                    </td>
                                     <td>{{ $sugestao->userSugestao->name }}</td>
                                     <td>
                                         <div aria-label="Botões de ação">

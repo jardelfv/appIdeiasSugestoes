@@ -6,6 +6,7 @@ use App\Mail\novaSugestao;
 use App\Sugestao;
 use App\Http\Controllers\Controller;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class SugestaoController extends Controller
 
     public $request;
     public $user;
+    private $sugestao;
     public function __construct(Request $request, User $user, Sugestao $sugestao)
     {
         $this->middleware('auth');
@@ -111,6 +113,49 @@ class SugestaoController extends Controller
         ]);
     }
 
+    /**
+     * atualizar o atributo status
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateStatus(Request $request){
+
+        $sugestao = Sugestao::find($request->id);
+        $sugestao->status = 3;
+        $sugestao->save();
+
+        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+    }
+
+    /**
+     * atualizar o atributo status, 1 para aprovado
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function aprovar(Request $request){
+
+        $sugestao = Sugestao::find($request->id);
+        $sugestao->status = 1;
+        $sugestao->data_aprovacao = Carbon::now();
+        $sugestao->save();
+
+        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+    }
+
+    /**
+     * atualizar o atributo status, 2 para reprovado
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function reprovar(Request $request){
+
+        $sugestao = Sugestao::find($request->id);
+        $sugestao->status = 2;
+        $sugestao->save();
+
+        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+    }
+
     public function avaliarSugestoes(){
         $sugestoes = Sugestao::all();
 
@@ -168,11 +213,9 @@ class SugestaoController extends Controller
         //var_dump($user);
         $sugestao = new Sugestao();
         $sugestao->user = Auth::user()->id;
-        $sugestao->data_aprovacao = null;
         $sugestao->titulo = $request->titulo;
         $sugestao->descricao = $request->descricao;
-        $sugestao->tipo = $request->tipo;
-        $sugestao->status = $request->status;
+        $sugestao->data_aprovacao = null;
 
         $sugestao->save();
 

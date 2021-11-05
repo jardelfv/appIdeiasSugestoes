@@ -19,9 +19,25 @@
                         <p>Título: {{ $sugestao->titulo }}</p>
                         <p>Descrição: {{ $sugestao->descricao }}</p>
                         <p>Tipo: {{ $sugestao->tipo }}</p>
-                        <p>Status: {{ $sugestao->status }}</p>
+                        <p>
+                            @if($sugestao->status == 1)
+                                aprovado!
+                            @elseif($sugestao->status == 2)
+                                reprovado...
+                            @elseif($sugestao->status == 3)
+                                em avaliação de viabilidade...
+                            @else
+                                aguardando...
+                            @endif
+                        </p>
                         <p>Criado em: {{ date('d/m/Y H:i', strtotime($sugestao->created_at)) }}</p>
-                        <p>Aprovado em: {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}</p>
+                        <p>
+                            @if($sugestao->data_aprovacao == null)
+                                ...
+                            @else
+                                {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}
+                            @endif
+                        </p>
                         <p><strong>Anexo(os):</strong></p>
                     </div>
                 </div>

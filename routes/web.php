@@ -44,6 +44,8 @@ Route::get('/Painel/sugestao/cadastrar', 'Painel\SugestaoController@addSugestao'
 Route::get('/Painel/sugestao/editar/{sugestao}', 'Painel\SugestaoController@editSugestao')->name('Painel.sugestoes.editSugestao');
 Route::put('/Painel/sugestao/edit/{sugestao}', 'Painel\SugestaoController@edit')->name('Painel.sugestoes.edit');
 Route::get('/Painel/sugestao/detalhes/{sugestao}', 'Painel\SugestaoController@listSugestao')->name('Painel.sugestoes.listSugestao');
+// atualizar o atributo status, referente a estapas que uma sugestão segue para ser implantada
+Route::put('/Painel/sugestao/aprovar/{request}', 'Painel\SugestaoController@aprovar')->name('sugestao.aprovar');
 
 Route::post('/Painel/sugestao/store', 'Painel\SugestaoController@storeSugestao')->name('Painel.sugestoes.storeSugestao');
 Route::delete('/Painel/sugestao/destroy/{sugestao}', 'Painel\SugestaoController@destroy')->name('Painel.sugestoes.destroy');

@@ -24,13 +24,15 @@
             </span>
           </a>
           <ul class="treeview-menu">
-              @php($sugestao = \App\Sugestao::find(Auth::user()->id))
-              @can('user-admin', $sugestao)
+              <!--
+
+                  -->
+              @if(Auth::user()->tipo == 'admin')
                 <li class="active"><a href="{{ route('Painel.index') }}"><i class="fa fa-home"></i> Painel Principal</a></li>
                 <li class="active"><a href="{{ route('Painel.sugestoes.listAllSugestoes') }}"><i class="fa fa-tags"></i> Todas as Sugestões</a></li>
                 <li class="active"><a href="{{ route('Painel.sugestoes.avaliarSugestoes') }}"><i class="fa fa-legal"></i> Avaliar Sugestões</a></li>
-                  <li class="active"><a href="{{ route('Painel.sugestoes.implantadas') }}"><i class="fa fa-child"></i> Sugestões Implantadas</a></li>
-              @endcan
+                <li class="active"><a href="{{ route('Painel.sugestoes.implantadas') }}"><i class="fa fa-child"></i> Sugestões Implantadas</a></li>
+              @endif
 
               <li class="active"><a href="{{ route('Painel.sugestoes.minhasSugestoes') }}"><i class="fa fa-tags"></i> Minhas Sugestões</a></li>
               <li class="active"><a href="{{ route('Painel.sugestoes.addSugestao') }}"><i class="fa fa-lightbulb-o"></i> Cadastrar Sugestões</a></li>

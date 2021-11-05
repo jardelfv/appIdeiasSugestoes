@@ -13,19 +13,18 @@ class CreateSugestoesTable extends Migration
      */
     public function up()
     {
-
         Schema::create('sugestoes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user');
             $table->string('titulo');
             $table->text('descricao');
-            $table->unsignedBigInteger('status');
-            $table->string('tipo');
-            $table->string('data_aprovacao')->nullable();
+            $table->integer('status')->default('0');
+            $table->integer('estapa')->nullable();
+            $table->string('tipo')->nullable();
+            $table->timestamp('data_aprovacao')->nullable();
             $table->timestamps();
             $table->foreign('user')->references('id')->on('users');
         });
-
 
     }
 
