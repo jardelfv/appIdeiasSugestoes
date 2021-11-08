@@ -139,7 +139,13 @@ class SugestaoController extends Controller
         $sugestao->data_aprovacao = Carbon::now();
         $sugestao->save();
 
-        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+        if($sugestao->save()){
+            return redirect()->back()->with('success', 'Aprovado com sucesso!');
+        }else{
+            return redirect()->route('Painel.sugestoes.listAllSugestoes');
+        }
+
+
     }
 
     /**

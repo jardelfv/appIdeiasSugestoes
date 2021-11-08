@@ -21,6 +21,14 @@
                         </div>
                     </div>
                     <!-- /.box-header -->
+                    @if (\Session::has('success'))
+                        <div class="alert alert-info" role="alert" id="msg-success">
+                            {!! \Session::get('success') !!}
+
+
+                        </div>
+
+                    @endif
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
@@ -63,14 +71,14 @@
                                     <td>
 
                                             <input type="hidden" name="sugestao_id" id="sugestao_id" value="" data-id="{{ $sugestao->id }}">
-                                            <button type="button" class="btn btn-success fa fa-thumbs-o-up" data-toggle="modal" data-target="#modal-danger" data-id="{{ $sugestao->id }}">
+                                            <button type="button" class="btn btn-success fa fa-thumbs-o-up" data-toggle="modal" data-target="#modal-success" data-id="{{ $sugestao->id }}">
                                                 Aprovar
                                             </button>
 
                                         <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Rejeitar"><i class="fa fa-thumbs-o-down"></i></a>
 
                                         <!-- Modal -->
-                                        <div class="modal modal-danger fade" id="modal-danger">
+                                        <div class="modal modal-success fade" id="modal-success">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
