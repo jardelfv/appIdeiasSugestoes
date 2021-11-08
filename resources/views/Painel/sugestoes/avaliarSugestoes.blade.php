@@ -12,7 +12,7 @@
                     <div class="box-header">
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Pesquisar">
 
                                 <div class="input-group-btn">
                                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -22,13 +22,17 @@
                     </div>
                     <!-- /.box-header -->
                     @if (\Session::has('success'))
-                        <div class="alert alert-info" role="alert" id="msg-success">
+                        <div class="alert alert-success" role="alert" id="msg-success">
                             {!! \Session::get('success') !!}
-
-
                         </div>
-
                     @endif
+
+                    @if (\Session::has('erro'))
+                        <div class="alert alert-danger" role="alert" id="msg-erro">
+                            {!! \Session::get('erro') !!}
+                        </div>
+                    @endif
+
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
@@ -69,15 +73,15 @@
                                     </td>
                                     <td>{{ $sugestao->userSugestao->name }}</td>
                                     <td>
+                                        <a class="btn btn-success" data-toggle="modal" data-placement="top" data-target="#modal-success" data-id="{{ $sugestao->id }}" title="Aprovar">
+                                            <i class="fa fa-thumbs-o-up"></i>
+                                        </a>
 
-                                            <input type="hidden" name="sugestao_id" id="sugestao_id" value="" data-id="{{ $sugestao->id }}">
-                                            <button type="button" class="btn btn-success fa fa-thumbs-o-up" data-toggle="modal" data-target="#modal-success" data-id="{{ $sugestao->id }}">
-                                                Aprovar
-                                            </button>
+                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modal-reprovar" data-id="{{ $sugestao->id }}" title="Rejeitar">
+                                            <i class="fa fa-thumbs-o-down"></i>
+                                        </a>
 
-                                        <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Rejeitar"><i class="fa fa-thumbs-o-down"></i></a>
-
-                                        <!-- Modal -->
+                                        <!-- Modal Aprovar-->
                                         <div class="modal modal-success fade" id="modal-success">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -86,8 +90,7 @@
                                                             <span aria-hidden="true">&times;</span></button>
                                                         <h4 class="modal-title">Aprovar Sugestão</h4>
                                                     </div>
-                                                    <input type="hidden" name="sugestao_id" id="sugestao_id" value="">
-                                                    <input type="text" name="sugestao_id" id="sugestao_id" value="" data-id="{{ $sugestao->id }}">
+
                                                     <div class="modal-body">
                                                         <p>Sugestão </p>
                                                         <h2><strong>Atenção!</strong> Você tem certeza que deseja aprovar esta sugestão?</h2>
@@ -106,7 +109,35 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
+                                        <!-- /.modal -->
 
+                                        <!-- Modal Reprovar-->
+                                        <div class="modal modal-danger fade" id="modal-reprovar">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title">Reprovar Sugestão</h4>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <h2><strong>Atenção!</strong> Você tem certeza que deseja reprovar esta sugestão?</h2>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+                                                        <form action="{{ route('sugestao.reprovar', ['id' => $sugestao->id]) }}" method="post">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('PUT') }}
+                                                            <input type="hidden" name="id" id="sugestao_id" value="">
+                                                            <button type="submit" class="btn btn-outline" id="sugestao_id" >Sim reprovar</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
                                         <!-- /.modal -->
                                     </td>
                                 </tr>

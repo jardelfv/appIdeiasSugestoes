@@ -34,7 +34,10 @@ Route::delete('/Painel/usuario/destroy/{user}', 'Painel\UserController@destroy')
 Route::get('/registrar/form', 'Auth\RegisterController@registrationForm')->name('registrationForm');
 Route::post('/registrar', 'Auth\RegisterController@store')->name('auth.registrar');
 
+//----------------------------------------envio de e-mails------------------------------------------------------------------------/
 Route::get('/Painel/sugestao/envio', 'Painel\SugestaoController@novaSugestao')->name('Painel.sugestoes.novaSugestao');
+
+//--------------------------------------------------------------------------------------------------------------------------------/
 
 Route::get('/Painel/sugestao/listar', 'Painel\SugestaoController@listAllSugestoes')->name('Painel.sugestoes.listAllSugestoes');
 Route::get('/Painel/sugestao/minhas', 'Painel\SugestaoController@minhasSugestoes')->name('Painel.sugestoes.minhasSugestoes');
@@ -44,24 +47,14 @@ Route::get('/Painel/sugestao/cadastrar', 'Painel\SugestaoController@addSugestao'
 Route::get('/Painel/sugestao/editar/{sugestao}', 'Painel\SugestaoController@editSugestao')->name('Painel.sugestoes.editSugestao');
 Route::put('/Painel/sugestao/edit/{sugestao}', 'Painel\SugestaoController@edit')->name('Painel.sugestoes.edit');
 Route::get('/Painel/sugestao/detalhes/{sugestao}', 'Painel\SugestaoController@listSugestao')->name('Painel.sugestoes.listSugestao');
-// atualizar o atributo status, referente a estapas que uma sugestão segue para ser implantada
+// atualizar a coluna status, referênte ao último processo de uma sugestão que segue para ser implantada
 Route::put('/Painel/sugestao/aprovar/{request}', 'Painel\SugestaoController@aprovar')->name('sugestao.aprovar');
+Route::put('/Painel/sugestao/reprovar/{request}', 'Painel\SugestaoController@reprovar')->name('sugestao.reprovar');
 
 Route::post('/Painel/sugestao/store', 'Painel\SugestaoController@storeSugestao')->name('Painel.sugestoes.storeSugestao');
 Route::delete('/Painel/sugestao/destroy/{sugestao}', 'Painel\SugestaoController@destroy')->name('Painel.sugestoes.destroy');
 Route::delete('/Painel/sugestao/delete/{request}', 'Painel\SugestaoController@delete')->name('sugestao.delete');
 
-
-//----------------------------------------envio de e-mails-------------------
-/*
-Route::get('envio-email', function () {
-    $user = Auth::user();
-
-    return new \App\Mail\novaSugestao($user);
-});
-*/
-
-//---------------------------------------------------------------------------
 
 Route::get('/login-site', function () {
     return view('site.login-site');

@@ -138,14 +138,12 @@ class SugestaoController extends Controller
         $sugestao = Sugestao::find($request->id);
         $sugestao->status = 1;
         $sugestao->data_aprovacao = Carbon::now();
-        $sugestao->save();
 
         if($sugestao->save()){
             return redirect()->back()->with('success', 'Aprovado com sucesso!');
         }else{
             return redirect()->route('Painel.sugestoes.listAllSugestoes');
         }
-
 
     }
 
@@ -158,9 +156,11 @@ class SugestaoController extends Controller
 
         $sugestao = Sugestao::find($request->id);
         $sugestao->status = 2;
-        $sugestao->save();
-
-        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+        if($sugestao->save()){
+            return redirect()->back()->with('success', 'Reprovado com sucesso!');
+        }else{
+            return redirect()->back()->with('erro', 'Algo deu errado! não foi possível reprovar');
+        }
     }
 
     public function avaliarSugestoes(){
