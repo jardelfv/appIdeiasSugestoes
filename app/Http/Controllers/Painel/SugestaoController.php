@@ -14,6 +14,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use function Couchbase\defaultDecoder;
 
 class SugestaoController extends Controller
 {
@@ -291,14 +292,16 @@ class SugestaoController extends Controller
 
         return redirect()->route('Painel.sugestoes.listAllSugestoes');
     }
-    public  $sugestao_id;
-    public function delete(Request $request, $id){
 
-        $id = $request['sugestao_id'];
-        $sugestao = $this->sugestao->find(id);
-        $sugestao->delete();
+    public function delete(Request $request){
+        $sugestao = Sugestao::find($request->id);
 
-        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+        if($sugestao->delete()){
+            return redirect()->back()->with('success', 'Deletado com sucesso!');
+        }else{
+            return redirect()->back()->with('erro', 'Algo deu errado! não foi possivel deletar');
+        }
+
     }
 
 }

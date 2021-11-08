@@ -47,6 +47,18 @@
     })
 </script>
 
+<!-- Modal deletar -->
+<script>
+    $('#modal-delete').on('show.bs.modal', function (event){
+        let button = $(event.relatedTarget); // dispara o modal
+        let recipientId = button.data('id');
+        console.log(recipientId);
+
+        let modal = $(this);
+        modal.find('#sugestao_id').val(recipientId);
+    })
+</script>
+
 <!-- Ação para ocultar a div depois de 5 segundos -->
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function(){

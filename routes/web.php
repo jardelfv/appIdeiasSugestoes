@@ -49,7 +49,7 @@ Route::put('/Painel/sugestao/aprovar/{request}', 'Painel\SugestaoController@apro
 
 Route::post('/Painel/sugestao/store', 'Painel\SugestaoController@storeSugestao')->name('Painel.sugestoes.storeSugestao');
 Route::delete('/Painel/sugestao/destroy/{sugestao}', 'Painel\SugestaoController@destroy')->name('Painel.sugestoes.destroy');
-Route::delete('/Painel/sugestao/destroy/{request, id}', 'Painel\SugestaoController@delete')->name('Painel.sugestoes.delete');
+Route::delete('/Painel/sugestao/delete/{request}', 'Painel\SugestaoController@delete')->name('sugestao.delete');
 
 
 //----------------------------------------envio de e-mails-------------------
