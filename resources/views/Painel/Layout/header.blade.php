@@ -31,7 +31,7 @@
                                 alt="User Image">
 
                             <p>
-                                {{ Auth::user()->name }} - Web Developer
+                                {{ Auth::user()->name }}
 
                                 <small>Membro há {{ Auth::user()->created_at->diffForHumans() }}</small>
                             </p>

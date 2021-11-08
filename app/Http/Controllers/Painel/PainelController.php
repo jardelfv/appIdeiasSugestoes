@@ -34,10 +34,17 @@ class PainelController extends Controller
         $user = Auth()->User();
         $sugestoes = Sugestao::all();
         $admin = 'admin';
+
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'/Painel/usuario', 'titulo'=>'Usuários'],
+        ];
+
         if($user->tipo == $admin){
-            return view('Painel.index', compact('user'));
+            return view('Painel.index', compact('user','caminhos'));
         }else{
-            return view('Painel.sugestoes.minhasSugestoes', compact('sugestoes'));
+            return view('Painel.sugestoes.minhasSugestoes', compact('sugestoes', 'caminhos'));
         }
 
     }

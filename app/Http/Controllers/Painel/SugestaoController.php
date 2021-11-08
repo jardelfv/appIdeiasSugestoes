@@ -6,6 +6,7 @@ use App\Mail\novaSugestao;
 use App\Sugestao;
 use App\Http\Controllers\Controller;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use function Couchbase\defaultDecoder;
 
 class SugestaoController extends Controller
 {
@@ -24,6 +26,7 @@ class SugestaoController extends Controller
 
     public $request;
     public $user;
+    private $sugestao;
     public function __construct(Request $request, User $user, Sugestao $sugestao)
     {
         $this->middleware('auth');
@@ -37,15 +40,28 @@ class SugestaoController extends Controller
     {
         $sugestoes = Sugestao::all();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Listar Sugestões'],
+        ];
 
         return view('Painel.sugestoes.listAllSugestoes', [
-            'sugestoes' =>$sugestoes
+            'sugestoes' =>$sugestoes,
+            'caminhos' =>$caminhos,
         ]);
     }
 
     public function listSugestao(Sugestao $sugestao){
         $comum = 'comum';
         $admin = 'admin';
+
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'/Painel/sugestao/listar', 'titulo'=>'Listar Sugestões'],
+            ['url'=>'', 'titulo'=>'Detalhes Sugestão'],
+        ];
 
         if(Auth::user()->tipo == $admin){
             $this->authorize('user-admin', $sugestao);
@@ -56,7 +72,8 @@ class SugestaoController extends Controller
         }
 
         return view('Painel.sugestoes.listSugestao', [
-            'sugestao'=> $sugestao
+            'sugestao'=> $sugestao,
+            'caminhos' =>$caminhos,
         ]);
     }
 
@@ -66,9 +83,15 @@ class SugestaoController extends Controller
         $sugestoes = Sugestao::all();
         //$sugestoes = $aux->where('id', '=', Auth::user()->id);
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Minhas Sugestões'],
+        ];
 
         return view('Painel.sugestoes.minhasSugestoes', [
-            'sugestoes'=> $sugestoes
+            'sugestoes'=> $sugestoes,
+            'caminhos' =>$caminhos,
         ]);
     }
 
@@ -79,16 +102,79 @@ class SugestaoController extends Controller
         //$sugestoes = DB::select('select * from sugestoes where status = :status', ['status' => 1]);
         $sugestoes = Sugestao::where('status', '3')->get();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Sugestões Implantadas'],
+        ];
+
         return view('Painel.sugestoes.implantadas', [
-            'sugestoes'=> $sugestoes
+            'sugestoes'=> $sugestoes,
+            'caminhos' =>$caminhos,
         ]);
+    }
+
+    /**
+     * atualizar o atributo status
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateStatus(Request $request){
+
+        $sugestao = Sugestao::find($request->id);
+        $sugestao->status = 3;
+        $sugestao->save();
+
+        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+    }
+
+    /**
+     * atualizar o atributo status, 1 para aprovado
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function aprovar(Request $request){
+
+        $sugestao = Sugestao::find($request->id);
+        $sugestao->status = 1;
+        $sugestao->data_aprovacao = Carbon::now();
+
+        if($sugestao->save()){
+            return redirect()->back()->with('success', 'Aprovado com sucesso!');
+        }else{
+            return redirect()->route('Painel.sugestoes.listAllSugestoes');
+        }
+
+    }
+
+    /**
+     * atualizar o atributo status, 2 para reprovado
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function reprovar(Request $request){
+
+        $sugestao = Sugestao::find($request->id);
+        $sugestao->status = 2;
+        if($sugestao->save()){
+            return redirect()->back()->with('success', 'Reprovado com sucesso!');
+        }else{
+            return redirect()->back()->with('erro', 'Algo deu errado! não foi possível reprovar');
+        }
     }
 
     public function avaliarSugestoes(){
         $sugestoes = Sugestao::all();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Avaliar Sugestões'],
+        ];
+
         return view('Painel.sugestoes.avaliarSugestoes', [
-            'sugestoes' =>$sugestoes
+            'sugestoes' =>$sugestoes,
+            'caminhos' =>$caminhos,
         ]);
     }
 
@@ -100,8 +186,15 @@ class SugestaoController extends Controller
     public function addSugestao(){
         $sugestao = new Sugestao();
 
+        // breadcrumbs
+        $caminhos = [
+            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Cadastrar Sugestões'],
+        ];
+
         return view('Painel.sugestoes.addSugestao', [
-            'sugestao'=> $sugestao
+            'sugestao'=> $sugestao,
+            'caminhos' =>$caminhos,
         ]);
     }
 
@@ -127,11 +220,9 @@ class SugestaoController extends Controller
         //var_dump($user);
         $sugestao = new Sugestao();
         $sugestao->user = Auth::user()->id;
-        $sugestao->data_aprovacao = null;
         $sugestao->titulo = $request->titulo;
         $sugestao->descricao = $request->descricao;
-        $sugestao->tipo = $request->tipo;
-        $sugestao->status = $request->status;
+        $sugestao->data_aprovacao = null;
 
         $sugestao->save();
 
@@ -201,14 +292,16 @@ class SugestaoController extends Controller
 
         return redirect()->route('Painel.sugestoes.listAllSugestoes');
     }
-    public  $sugestao_id;
-    public function delete(Request $request, $id){
 
-        $id = $request['sugestao_id'];
-        $sugestao = $this->sugestao->find(id);
-        $sugestao->delete();
+    public function delete(Request $request){
+        $sugestao = Sugestao::find($request->id);
 
-        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+        if($sugestao->delete()){
+            return redirect()->back()->with('success', 'Deletado com sucesso!');
+        }else{
+            return redirect()->back()->with('erro', 'Algo deu errado! não foi possivel deletar');
+        }
+
     }
 
 }

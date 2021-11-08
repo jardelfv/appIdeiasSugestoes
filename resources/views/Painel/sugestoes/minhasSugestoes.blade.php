@@ -3,9 +3,10 @@
 @section('content')
     <!-- Main content -->
     <section class="content">
+        <!-- breadcrumbs -->
+        @include('Painel._caminho')
         <!-- Small boxes (Stat box) -->
         <div class="row">
-
             <div class="col-xs-12">
                 <h2 class="box-title"><i class="fa fa-tags"></i>Minhas Sugestões</h2>
                 <div class="box">
@@ -41,9 +42,25 @@
                                     <td>{{ $sugestao->titulo}}</td>
                                     <td>{{ $sugestao->descricao}}</td>
                                     <td>{{ $sugestao->tipo }}</td>
-                                    <td>{{ $sugestao->status }}</td>
+                                    <td>
+                                        @if($sugestao->status == 1)
+                                            aprovado!
+                                        @elseif($sugestao->status == 2)
+                                            reprovado...
+                                        @elseif($sugestao->status == 3)
+                                            em avaliação de viabilidade...
+                                        @else
+                                            aguardando...
+                                        @endif
+                                    </td>
                                     <td>{{ date('d/m/Y H:i', strtotime($sugestao->created_at)) }}</td>
-                                    <td>{{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}</td>
+                                    <td>
+                                        @if($sugestao->data_aprovacao == null)
+                                            ...
+                                        @else
+                                            {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}
+                                        @endif
+                                    </td>
                                     <td>{{ $sugestao->userSugestao->name }}</td>
                                     <td>
                                         <div aria-label="Botões de ação">

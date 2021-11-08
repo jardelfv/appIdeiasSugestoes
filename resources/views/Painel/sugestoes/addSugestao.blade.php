@@ -3,8 +3,9 @@
 @section('content')
 
     <section class="content">
+        <!-- breadcrumbs -->
+        @include('Painel._caminho')
         <div class="row">
-
             <div class="col-xs-12">
                 <h2><i class="fa fa-lightbulb-o"></i> Cadastrar sugestão ou ideia</h2>
                 <br>
@@ -23,18 +24,8 @@
                             <textarea class="form-control" name="descricao" value="{{ $sugestao->descricao }}" placeholder="Descrição"></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-1 col-form-label">Tipo</label>
-                        <div class="col-sm-3">
-                            <input type="number" class="form-control" name="tipo" value="{{ $sugestao->tipo }}" placeholder="tipo">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-1 col-form-label">Status</label>
-                        <div class="col-sm-3">
-                            <input type="number" class="form-control" name="status" value="{{ $sugestao->status }}" placeholder="status">
-                        </div>
-                    </div>
+
+
                     <label class="btn btn-default">
                         Anexar apresentação <input type="file" hidden>
                     </label>

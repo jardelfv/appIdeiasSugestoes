@@ -4,8 +4,8 @@
     <!-- Main content -->
     <section class="content">
         <!-- Small boxes (Stat box) -->
+        @include('Painel._caminho')
         <div class="row">
-
             <div class="col-xs-12">
                 <h2 class="box-title"><i class="fa fa-tags"></i>Todas as Sugestões</h2>
                 <div class="box">
@@ -20,6 +20,13 @@
                             </div>
                         </div>
                     </div>
+                    @if (\Session::has('success'))
+                        <div class="alert alert-info" role="alert" id="msg-success">
+                            {!! \Session::get('success') !!}
+
+                        </div>
+
+                    @endif
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
@@ -40,9 +47,26 @@
                                     <td>{{ $sugestao->titulo}}</td>
                                     <td>{{ $sugestao->descricao}}</td>
                                     <td>{{ $sugestao->tipo }}</td>
-                                    <td>{{ $sugestao->status }}</td>
+                                    <td>
+                                        @if($sugestao->status == 1)
+                                            aprovado!
+                                        @elseif($sugestao->status == 2)
+                                            reprovado...
+                                        @elseif($sugestao->status == 3)
+                                            em avaliação de viabilidade...
+                                        @else
+                                            aguardando...
+                                        @endif
+                                    </td>
                                     <td>{{ date('d/m/Y H:i', strtotime($sugestao->created_at)) }}</td>
-                                    <td>{{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}</td>
+                                    <td>
+                                        @if($sugestao->data_aprovacao == null && $sugestao->status =! 2)
+                                            ...
+                                        @else
+                                            {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}
+
+                                        @endif
+                                    </td>
                                     <td>{{ $sugestao->userSugestao->name }}</td>
                                     <td>
                                         <div aria-label="Botões de ação">
@@ -50,13 +74,13 @@
                                             <a class="btn btn-warning" href="{{ route('Painel.sugestoes.editSugestao', ['sugestao' => $sugestao->id]) }}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></a>
                                             <!-- <input type="submit" value="Del" class="btn btn-danger" data-toggle="tooltip" data-target="#deleteModal" data-toggle="tooltip" data-placement="top" title="Deletar"> -->
                                             <input type="hidden" name="sugestao_id" id="sugestao_id" value="" data-id="{{ $sugestao->id }}">
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" data-id="{{ $sugestao->id }}">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete" data-id="{{ $sugestao->id }}">
                                                 Del
                                             </button>
                                         </div>
 
                                         <!-- Modal -->
-                                            <div class="modal modal-danger fade" id="modal-danger">
+                                            <div class="modal modal-danger fade" id="modal-delete">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -64,17 +88,16 @@
                                                                 <span aria-hidden="true">&times;</span></button>
                                                             <h4 class="modal-title">Excluir Sugestão</h4>
                                                         </div>
-                                                        <input type="hidden" name="sugestao_id" id="sugestao_id" value="">
 
                                                         <div class="modal-body">
-                                                            <p>Sugestão {{ $sugestao->id }}</p>
                                                             <h2><strong>Atenção!</strong> Você tem certeza que deseja excluir esta sugestão?</h2>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                                                            <form action="{{ route('Painel.sugestoes.delete', $sugestao->id) }}" method="post">
+                                                            <form action="{{ route('sugestao.delete', ['id' => $sugestao->id]) }}" method="post">
                                                                 {{ method_field('delete') }}
-                                                                {{ csrf_field() }}
+                                                                {{ csrf_field('PUT') }}
+                                                                <input type="hidden" name="id" id="sugestao_id" value="">
 
                                                             <button type="submit" class="btn btn-outline" id="sugestao_id" >Sim Deletar</button>
                                                             </form>

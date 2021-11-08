@@ -8,6 +8,10 @@ class Sugestao extends Model
 {
     protected $table = 'sugestoes';
 
+    protected $dates = [
+        'data_aprovacao'
+    ];
+
     public function userSugestao(){
         // caminho de volta para consulta
         return $this->belongsTo(User::class, 'user', 'id');

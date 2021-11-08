@@ -78,7 +78,7 @@
                                     @else
                                     <li class="list-item"><a href="{{ route('login') }}"
                                                              class="nav-link text-white"><strong>Login no sistema</strong></a></li>
-                                    <li class="list-item"><a href="{{ route('register') }}"
+                                    <li class="list-item"><a href="{{ url('/registrar/form') }}"
                                                              class="nav-link text-white">Cadastre-se</a></li>
                                     @endif
 

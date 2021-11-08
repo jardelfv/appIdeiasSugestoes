@@ -1,6 +1,6 @@
 <p align="center">
-    <img src="http://prefeitura.jfvcloud.com/portal_de_ideias/appIdeiasSugestoes/public/img/Novo%20Logo%20verde.png"> 
-    <img src="https://doity.com.br/media/doity/eventos/evento-1418-logo_organizador.jpeg">
+    <img src="http://prefeitura.jfvcloud.com/portal_de_ideias/appIdeiasSugestoes/public/img/Novo%20Logo%20verde.png" width="200"> 
+    <img src="https://doity.com.br/media/doity/eventos/evento-1418-logo_organizador.jpeg" width="200">
 </p>
 
 <p align="center">

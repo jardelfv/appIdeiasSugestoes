@@ -35,3 +35,56 @@
 <script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script>
+<!-- Modal aprovar -->
+<script>
+    $('#modal-success').on('show.bs.modal', function (event){
+        let button = $(event.relatedTarget); // dispara o modal
+        let recipientId = button.data('id');
+        console.log(recipientId);
+
+        let modal = $(this);
+        modal.find('#sugestao_id').val(recipientId);
+    })
+</script>
+
+<!-- Modal reprovar -->
+<script>
+    $('#modal-reprovar').on('show.bs.modal', function (event){
+        let button = $(event.relatedTarget); // dispara o modal
+        let recipientId = button.data('id');
+        console.log(recipientId);
+
+        let modal = $(this);
+        modal.find('#sugestao_id').val(recipientId);
+    })
+</script>
+
+<!-- Modal deletar -->
+<script>
+    $('#modal-delete').on('show.bs.modal', function (event){
+        let button = $(event.relatedTarget); // dispara o modal
+        let recipientId = button.data('id');
+        console.log(recipientId);
+
+        let modal = $(this);
+        modal.find('#sugestao_id').val(recipientId);
+    })
+</script>
+
+<!-- Alerta de sucesso, ação para ocultar a div depois de 5 segundos -->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+        setTimeout(function() {
+            $('#msg-success').fadeOut().empty();
+        }, 4000);
+    }, false);
+</script>
+
+<!-- Alerta de erro, ação para ocultar a div depois de 5 segundos -->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(){
+        setTimeout(function() {
+            $('#msg-erro').fadeOut().empty();
+        }, 4000);
+    }, false);
+</script>
