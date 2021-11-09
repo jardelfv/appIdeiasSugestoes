@@ -9,7 +9,7 @@
             <div class="col-xs-12">
                 <h2><i class="fa fa-lightbulb-o"></i> Cadastrar sugestão ou ideia</h2>
                 <br>
-                <form action="{{ route('Painel.sugestoes.storeSugestao') }}" method="post">
+                <form action="{{ route('Painel.sugestoes.storeSugestao') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <!-- <input type="text" class="form-control" name="titulo" value="" placeholder="Título da sua ideia ou sugestão"> -->
                     <div class="form-group row">
@@ -27,7 +27,7 @@
 
 
                     <label class="btn btn-default">
-                        Anexar apresentação <input type="file" hidden>
+                        Anexar apresentação <input type="file" name="arquivo">
                     </label>
 
                     <div class="form-group row">
