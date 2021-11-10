@@ -2,10 +2,10 @@ on:
   push:
     branches:
       - main
-name: 🚀 Deploy website on push
+name: 🚀 Deploy servidor de produção
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: 🎉 Deploy server prefeitura
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
