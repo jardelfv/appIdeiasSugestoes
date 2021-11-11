@@ -38,7 +38,15 @@
                                 {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}
                             @endif
                         </p>
-                        <p><strong>Anexo(os):</strong></p>
+                        <p><strong>Anexo:</strong></p>
+                        <p>
+                            @if($sugestao->caminho != null)
+                                <a href="{{ route('arquivo.download', $sugestao) }}" class="btn btn-success">Download</a>
+                            @else
+                                sem anexo...
+                            @endif
+
+                        </p>
                     </div>
                 </div>
             </div>

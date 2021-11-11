@@ -7,13 +7,17 @@ use App\Sugestao;
 use App\Http\Controllers\Controller;
 use App\User;
 use Carbon\Carbon;
+use App\Http\Requests\StoreSugestaoRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use function Couchbase\defaultDecoder;
 
 class SugestaoController extends Controller
@@ -207,28 +211,63 @@ class SugestaoController extends Controller
     }
 
     /**
+     * Crie uma nova instância de sugestão após um registro válido.
+     *
+     * @param  array  $data
+     * @return Sugestao
+     */
+    protected function create(array $data)
+    {
+        return Sugestao::create([
+            'titulo' => $data['titulo'],
+            'descricao' => $data['descricao'],
+            'user' => $data['user'],
+
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeSugestao(Request $request)
+    public function store(StoreSugestaoRequest $request)
     {
-        //$user = User::where('id', $id)->first();
         $user = Auth::user();
-        //dd(env('MAIL_USERNAME'));
-        //var_dump($user);
-        $sugestao = new Sugestao();
-        $sugestao->user = Auth::user()->id;
-        $sugestao->titulo = $request->titulo;
-        $sugestao->descricao = $request->descricao;
-        $sugestao->data_aprovacao = null;
 
-        $sugestao->save();
+        $dataform = $request->all();
+        if($dataform){
+            // salvar os dados
+            $this->create($dataform);
 
-        Mail::to($user->email)->send(new novaSugestao(Auth::user()));
+            if(Input::hasFile('arquivo')){
+                if ($request->file('arquivo')->isValid()){
+                    $caminho = $request->file('arquivo')->store('sugestoes/' . $user->id);
 
-        return redirect()->route('Painel.sugestoes.listAllSugestoes');
+                    $sugestao = Sugestao::find($user->id);
+                    $sugestao->caminho = $caminho;
+                    $sugestao->save();
+                }
+            }
+
+            //Mail::to($user->email)->send(new novaSugestao(Auth::user()));
+
+            return redirect()->route('Painel.sugestoes.minhasSugestoes');
+        }else{
+
+            return view('auth.registrar');
+        }
+
+        //Mail::to($user->email)->send(new novaSugestao(Auth::user()));
+
+
+    }
+
+    public function fileShow(Sugestao $sugestao)
+    {
+        $path = '/app/'.$sugestao->caminho;
+        return response()->download(storage_path($path));
     }
 
     /**

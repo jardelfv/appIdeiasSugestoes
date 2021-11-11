@@ -92,7 +92,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                                                            <form action="{{ route('Painel.sugestoes.delete', $sugestao->id) }}" method="post">
+                                                            <form action="{{ route('sugestao.delete', $sugestao->id) }}" method="post">
                                                                 {{ method_field('delete') }}
                                                                 {{ csrf_field() }}
 

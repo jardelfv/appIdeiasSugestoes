@@ -43,7 +43,7 @@ Route::get('/Painel/sugestao/listar', 'Painel\SugestaoController@listAllSugestoe
 Route::get('/Painel/sugestao/minhas', 'Painel\SugestaoController@minhasSugestoes')->name('Painel.sugestoes.minhasSugestoes');
 Route::get('/Painel/sugestao/implantadas', 'Painel\SugestaoController@implantadas')->name('Painel.sugestoes.implantadas');
 Route::get('/Painel/sugestao/avaliar', 'Painel\SugestaoController@avaliarSugestoes')->name('Painel.sugestoes.avaliarSugestoes');
-Route::get('/Painel/sugestao/cadastrar', 'Painel\SugestaoController@addSugestao')->name('Painel.sugestoes.addSugestao');
+Route::get('/Painel/sugestao/cadastrar', 'Painel\SugestaoController@addSugestao')->name('sugestoes.addSugestao');
 Route::get('/Painel/sugestao/editar/{sugestao}', 'Painel\SugestaoController@editSugestao')->name('Painel.sugestoes.editSugestao');
 Route::put('/Painel/sugestao/edit/{sugestao}', 'Painel\SugestaoController@edit')->name('Painel.sugestoes.edit');
 Route::get('/Painel/sugestao/detalhes/{sugestao}', 'Painel\SugestaoController@listSugestao')->name('Painel.sugestoes.listSugestao');
@@ -51,7 +51,8 @@ Route::get('/Painel/sugestao/detalhes/{sugestao}', 'Painel\SugestaoController@li
 Route::put('/Painel/sugestao/aprovar/{request}', 'Painel\SugestaoController@aprovar')->name('sugestao.aprovar');
 Route::put('/Painel/sugestao/reprovar/{request}', 'Painel\SugestaoController@reprovar')->name('sugestao.reprovar');
 
-Route::post('/Painel/sugestao/store', 'Painel\SugestaoController@storeSugestao')->name('Painel.sugestoes.storeSugestao');
+Route::get('/arquivo/download/{sugestao}', 'Painel\SugestaoController@fileShow')->name('arquivo.download');
+Route::post('/Painel/sugestao/store', 'Painel\SugestaoController@store')->name('sugestoes.store');
 Route::delete('/Painel/sugestao/destroy/{sugestao}', 'Painel\SugestaoController@destroy')->name('Painel.sugestoes.destroy');
 Route::delete('/Painel/sugestao/delete/{request}', 'Painel\SugestaoController@delete')->name('sugestao.delete');
 

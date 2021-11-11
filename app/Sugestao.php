@@ -12,6 +12,10 @@ class Sugestao extends Model
         'data_aprovacao'
     ];
 
+    protected $fillable = [
+        'titulo', 'descricao', 'user',
+    ];
+
     public function userSugestao(){
         // caminho de volta para consulta
         return $this->belongsTo(User::class, 'user', 'id');

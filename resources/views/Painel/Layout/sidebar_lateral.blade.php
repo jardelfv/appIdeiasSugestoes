@@ -35,7 +35,7 @@
               @endif
 
               <li class="active"><a href="{{ route('Painel.sugestoes.minhasSugestoes') }}"><i class="fa fa-tags"></i> Minhas Sugestões</a></li>
-              <li class="active"><a href="{{ route('Painel.sugestoes.addSugestao') }}"><i class="fa fa-lightbulb-o"></i> Cadastrar Sugestões</a></li>
+              <li class="active"><a href="{{ route('sugestoes.addSugestao') }}"><i class="fa fa-lightbulb-o"></i> Cadastrar Sugestões</a></li>
             @if(Auth::user()->tipo == 'admin')
               <li class="active"><a href="{{ route('Painel.users.listAllUsers') }}"><i class="fa fa-users"></i> Usuários</a></li>
             @endif
