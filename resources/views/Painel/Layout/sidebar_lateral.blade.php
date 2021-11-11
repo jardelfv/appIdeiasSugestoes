@@ -39,7 +39,6 @@
             @if(Auth::user()->tipo == 'admin')
               <li class="active"><a href="{{ route('Painel.users.listAllUsers') }}"><i class="fa fa-users"></i> Usuários</a></li>
             @endif
-              <li class="active"><a href="{{ route('Painel.sugestoes.novaSugestao') }}"><i class="fa fa-lightbulb-o"></i> teste de envio mail</a></li>
 
           </ul>
         </li>

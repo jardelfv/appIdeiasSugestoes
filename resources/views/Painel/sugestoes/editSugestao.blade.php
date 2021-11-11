@@ -19,7 +19,7 @@
                     <div class="form-group row">
                         <label class="col-sm-1 col-form-label">Descrição</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="descricao" value="{{ $sugestao->descricao }}" placeholder="Descrição">
+                            <textarea cols="5" rows="10" class="form-control" name="descricao" value="{{ $sugestao->descricao }}" placeholder="Descrição">{{ $sugestao->descricao }}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">

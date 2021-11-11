@@ -69,41 +69,40 @@
                                             <a class="btn btn-warning" href="{{ route('Painel.sugestoes.editSugestao', ['sugestao' => $sugestao->id]) }}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></a>
                                             <!-- <input type="submit" value="Del" class="btn btn-danger" data-toggle="tooltip" data-target="#deleteModal" data-toggle="tooltip" data-placement="top" title="Deletar"> -->
                                             <input type="hidden" name="sugestao_id" id="sugestao_id" value="" data-id="{{ $sugestao->id }}">
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" data-id="{{ $sugestao->id }}">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete" data-id="{{ $sugestao->id }}">
                                                 Del
                                             </button>
                                             @endcan
                                         </div>
 
                                         <!-- Modal -->
-                                            <div class="modal modal-danger fade" id="modal-danger">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title">Excluir Sugestão</h4>
-                                                        </div>
-                                                        <input type="hidden" name="sugestao_id" id="sugestao_id" value="">
+                                        <div class="modal modal-danger fade" id="modal-delete">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title">Excluir Sugestão</h4>
+                                                    </div>
 
-                                                        <div class="modal-body">
-                                                            <p>Sugestão {{ $sugestao->id }}</p>
-                                                            <h2><strong>Atenção!</strong> Você tem certeza que deseja excluir esta sugestão?</h2>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                                                            <form action="{{ route('sugestao.delete', $sugestao->id) }}" method="post">
-                                                                {{ method_field('delete') }}
-                                                                {{ csrf_field() }}
+                                                    <div class="modal-body">
+                                                        <h2><strong>Atenção!</strong> Você tem certeza que deseja excluir esta sugestão?</h2>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+                                                        <form action="{{ route('sugestao.delete', ['id' => $sugestao->id]) }}" method="post">
+                                                            {{ method_field('delete') }}
+                                                            {{ csrf_field('PUT') }}
+                                                            <input type="hidden" name="id" id="sugestao_id" value="">
 
                                                             <button type="submit" class="btn btn-outline" id="sugestao_id" >Sim Deletar</button>
-                                                            </form>
-                                                        </div>
+                                                        </form>
                                                     </div>
-                                                    <!-- /.modal-content -->
                                                 </div>
-                                                <!-- /.modal-dialog -->
+                                                <!-- /.modal-content -->
                                             </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
 
                                         <!-- /.modal -->
 

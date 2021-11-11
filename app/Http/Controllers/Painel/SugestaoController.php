@@ -6,6 +6,7 @@ use App\Mail\novaSugestao;
 use App\Sugestao;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Notifications\notificaNovaSugestao;
 use Carbon\Carbon;
 use App\Http\Requests\StoreSugestaoRequest;
 use Illuminate\Support\Facades\DB;
@@ -235,23 +236,23 @@ class SugestaoController extends Controller
     public function store(StoreSugestaoRequest $request)
     {
         $user = Auth::user();
-
         $dataform = $request->all();
         if($dataform){
             // salvar os dados
-            $this->create($dataform);
-
+            $recuperaId = $this->create($dataform);
+            $sugestao = Sugestao::find($recuperaId->id);
+            
             if(Input::hasFile('arquivo')){
                 if ($request->file('arquivo')->isValid()){
                     $caminho = $request->file('arquivo')->store('sugestoes/' . $user->id);
 
-                    $sugestao = Sugestao::find($user->id);
                     $sugestao->caminho = $caminho;
                     $sugestao->save();
                 }
             }
 
-            //Mail::to($user->email)->send(new novaSugestao(Auth::user()));
+            //Mail::to($user->email)->send(new novaSugestao($user, $sugestao));
+            $user->notify(new notificaNovaSugestao($user, $sugestao));
 
             return redirect()->route('Painel.sugestoes.minhasSugestoes');
         }else{
