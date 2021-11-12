@@ -22,6 +22,7 @@ class CreateSugestoesTable extends Migration
             $table->integer('etapa')->nullable();
             $table->string('tipo')->nullable();
             $table->timestamp('data_aprovacao')->nullable();
+            $table->timestamp('data_reprovacao')->nullable();
             $table->string('caminho')->nullable();
             $table->timestamps();
             $table->foreign('user')->references('id')->on('users');
