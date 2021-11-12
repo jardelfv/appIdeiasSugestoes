@@ -17,5 +17,5 @@ jobs:
           server: ${{ secrets.ftp_host_tester }}
           username: ${{ secrets.ftp_user_tester }}
           password: ${{ secrets.ftp_password_tester }}
-          server-dir: public_html/prefeitura
+          server-dir: public_html/prefeitura/
           exclude: ${{ secrets.ftp_gitignore }}
