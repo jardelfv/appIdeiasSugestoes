@@ -43,7 +43,7 @@ class SugestaoController extends Controller
 
     public function listAllSugestoes()
     {
-        $sugestoes = Sugestao::all();
+        $sugestoes = Sugestao::all()->sortByDesc("id");
 
         // breadcrumbs
         $caminhos = [

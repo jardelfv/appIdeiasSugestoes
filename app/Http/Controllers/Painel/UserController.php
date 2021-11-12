@@ -109,6 +109,9 @@ class UserController extends Controller
         if(!empty($request->password)){
             $user->password = Hash::make($request->password);
         }
+        if(!empty($request->tipo)){
+            $user->tipo = $request->tipo;
+        }
 
         $user->save();
         return redirect()->route('Painel.users.listAllUsers');

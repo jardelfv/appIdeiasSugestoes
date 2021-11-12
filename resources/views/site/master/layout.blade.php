@@ -71,8 +71,6 @@
                             @if (Route::has('login'))
 
                                     @if (Auth::check())
-                                    <li class="list-item"><a href="{{ route('site.home') }}"
-                                                             class="nav-link text-white">Home</a></li>
                                     <li class="list-item"><a href="{{ route('Painel.index') }}"
                                                              class="nav-link text-white">Meu Painel</a></li>
                                     @else
