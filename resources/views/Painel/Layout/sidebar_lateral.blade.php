@@ -18,7 +18,7 @@
         <li class="header">Menu Lateral</li>
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Painel</span>
+            <i class="fa fa-reorder "></i> <span>Menu</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -27,8 +27,8 @@
               <!--
 
                   -->
+              <li class="active"><a href="{{ route('Painel.index') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
               @if(Auth::user()->tipo == 'admin')
-                <li class="active"><a href="{{ route('Painel.index') }}"><i class="fa fa-home"></i> Painel Principal</a></li>
                 <li class="active"><a href="{{ route('Painel.sugestoes.listAllSugestoes') }}"><i class="fa fa-tags"></i> Todas as Sugestões</a></li>
                 <li class="active"><a href="{{ route('Painel.sugestoes.avaliarSugestoes') }}"><i class="fa fa-legal"></i> Avaliar Sugestões</a></li>
                 <li class="active"><a href="{{ route('Painel.sugestoes.implantadas') }}"><i class="fa fa-child"></i> Sugestões Implantadas</a></li>

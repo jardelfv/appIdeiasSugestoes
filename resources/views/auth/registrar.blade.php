@@ -26,7 +26,7 @@
                             <label for="name" class="col-md-4 control-label">Nome</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('nome') }}">
 
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             <label for="matricula" class="col-md-4 control-label">Matrícula</label>
 
                             <div class="col-md-6">
-                                <input id="matricula" type="number" class="form-control" name="matricula">
+                                <input id="matricula" type="number" class="form-control" name="matricula" value="{{ old('matricula') }}">
 
 
                                     <span class="is-invalid">

@@ -40,13 +40,17 @@ class PainelController extends Controller
             ['url'=>'/Painel', 'titulo'=>'Painel'],
             ['url'=>'/Painel/usuario', 'titulo'=>'Usuários'],
         ];
+        
+        // consulta para os cards
+        $aguadando = Sugestao::where('status', '0')->get();
+        $implantadas = Sugestao::where('status', '>' ,'0')->get();
+        $enviadas = Sugestao::where('user', '=' ,$user->id)->get();
+        $aprovadas = Sugestao::where('user', '=' ,$user->id)
+                                    ->where('status', '=' ,'1')
+                                    ->get();
 
-        if($user->tipo == $admin){
-            return view('Painel.index', compact('user','caminhos'));
-        }else{
-            return view('Painel.sugestoes.minhasSugestoes', compact('sugestoes', 'caminhos'));
-        }
-
+        return view('Painel.index', compact('user','caminhos','aguadando','implantadas','enviadas','aprovadas'));
+        
     }
 /*
     public function viewUsuarios()

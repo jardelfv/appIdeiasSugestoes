@@ -45,5 +45,39 @@ class AuthServiceProvider extends ServiceProvider
 
             return $user->id == $sugestao->userSugestao->id;
         });
+
+        Gate::define('listar-usuarios', function ($user){
+            $admin = 'admin';
+            $comum = 'comum';
+            $avaliador = 'avaliador';
+            
+            return $user->tipo == $admin;
+        });
+
+        Gate::define('listar-sugestoes', function ($user){
+            $admin = 'admin';
+            $comum = 'comum';
+            $avaliador = 'avaliador';
+            
+            return $user->tipo == $admin;
+        });
+
+        Gate::define('listar-implantadas', function ($user){
+            $admin = 'admin';
+            $comum = 'comum';
+            $avaliador = 'avaliador';
+            
+            return $user->tipo == $admin || $user->tipo == $avaliador;
+        });
+
+        Gate::define('listar-aguardandoAvaliacao', function ($user){
+            $admin = 'admin';
+            $comum = 'comum';
+            $avaliador = 'avaliador';
+            
+            return $user->tipo == $admin || $user->tipo == $avaliador;
+        });
+
+
     }
 }

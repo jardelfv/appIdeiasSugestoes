@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Hash;
+use Auth;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -39,6 +41,12 @@ class UserController extends Controller
             ['url'=>'/Painel', 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Usuários Cadastrados'],
         ];
+
+        // autorização para nível de usuário
+        //$this->authorize('listar-usuarios', Auth::user());
+        if(Gate::denies('listar-usuarios',Auth::user())){
+            abort(403,"Não autorizado");
+        }
 
         return view('Painel.users.listAllUsers', [
             'users'=> $users,

@@ -50,6 +50,11 @@ class SugestaoController extends Controller
             ['url'=>'/Painel', 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Listar Sugestões'],
         ];
+        
+        // autorização para nível de usuário
+        if(Gate::denies('listar-sugestoes',Auth::user())){
+            abort(403,"Não autorizado");
+        }
 
         return view('Painel.sugestoes.listAllSugestoes', [
             'sugestoes' =>$sugestoes,
@@ -104,14 +109,19 @@ class SugestaoController extends Controller
         $comum = 'comum';
         $admin = 'admin';
         //$sugestoes = DB::table('sugestoes')->where('status', '=', '3');
-        //$sugestoes = DB::select('select * from sugestoes where status = :status', ['status' => 1]);
-        $sugestoes = Sugestao::where('status', '3')->get();
+        //$sugestoes = Sugestao::where('status', '3')->get();
+        $sugestoes = Sugestao::where('status', '>' ,'0')->get();
 
         // breadcrumbs
         $caminhos = [
             ['url'=>'/Painel', 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Sugestões Implantadas'],
         ];
+
+        // autorização para nível de usuário
+        if(Gate::denies('listar-implantadas',Auth::user())){
+            abort(403,"Não autorizado");
+        }
 
         return view('Painel.sugestoes.implantadas', [
             'sugestoes'=> $sugestoes,
@@ -169,13 +179,19 @@ class SugestaoController extends Controller
     }
 
     public function avaliarSugestoes(){
-        $sugestoes = Sugestao::all();
+        //$sugestoes = Sugestao::all();
+        $sugestoes = Sugestao::where('status', '0')->get();
 
         // breadcrumbs
         $caminhos = [
             ['url'=>'/Painel', 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Avaliar Sugestões'],
         ];
+
+       // autorização para nível de usuário
+       if(Gate::denies('listar-aguardandoAvaliacao',Auth::user())){
+        abort(403,"Não autorizado");
+        }
 
         return view('Painel.sugestoes.avaliarSugestoes', [
             'sugestoes' =>$sugestoes,

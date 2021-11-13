@@ -60,12 +60,7 @@
                                     </td>
                                     <td>{{ date('d/m/Y H:i', strtotime($sugestao->created_at)) }}</td>
                                     <td class="text-center">
-                                        @if($sugestao->data_aprovacao == null)
-                                        <i class="fa fa  fa-clock-o"></i>
-                                        @else
-                                            {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}
-
-                                        @endif
+                                        @includeIf('Painel.Layout.dataAprovadoReprovado')
                                     </td>
                                     <td>{{ $sugestao->userSugestao->name }}</td>
                                     <td>

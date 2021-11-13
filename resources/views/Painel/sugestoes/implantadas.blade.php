@@ -28,7 +28,6 @@
                                 <th>Cód</th>
                                 <th>Título</th>
                                 <th>Descrição</th>
-                                <th>Tipo</th>
                                 <th>Status</th>
                                 <th>Data Criação</th>
                                 <th>Data Aprovação</th>
@@ -41,7 +40,6 @@
                                     <td>{{ $sugestao->id }}</td>
                                     <td>{{ $sugestao->titulo}}</td>
                                     <td>{{ $sugestao->descricao}}</td>
-                                    <td>{{ $sugestao->tipo }}</td>
                                     <td>
                                         @if($sugestao->status == 1)
                                             aprovado!
@@ -55,11 +53,7 @@
                                     </td>
                                     <td>{{ date('d/m/Y H:i', strtotime($sugestao->created_at)) }}</td>
                                     <td>
-                                        @if($sugestao->data_aprovacao == null)
-                                            ...
-                                        @else
-                                            {{ date('d/m/Y H:i', strtotime($sugestao->data_aprovacao)) }}
-                                        @endif
+                                       @includeIf('Painel.Layout.dataAprovadoReprovado')
                                     </td>
                                     <td>{{ $sugestao->userSugestao->name }}</td>
                                     <td>
