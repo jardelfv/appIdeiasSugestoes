@@ -64,7 +64,7 @@
                 <div class="small-box bg-yellow">
                     <div class="inner">
                         @inject('sugestoes', 'App\Sugestao')
-                        <h3>{{ $aguadando->count() }}</h3>
+                        <h3>{{ $aguardando->count() }}</h3>
 
                         <p>Sugestões aguardando avaliação</p>
                     </div>

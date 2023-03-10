@@ -42,14 +42,14 @@ class PainelController extends Controller
         ];
         
         // consulta para os cards
-        $aguadando = Sugestao::where('status', '0')->get();
-        $implantadas = Sugestao::where('status', '>' ,'0')->get();
+        $aguardando = Sugestao::where('status', '0')->get();
+        $implantadas = Sugestao::where('status','3')->get();
         $enviadas = Sugestao::where('user', '=' ,$user->id)->get();
         $aprovadas = Sugestao::where('user', '=' ,$user->id)
                                     ->where('status', '=' ,'1')
                                     ->get();
 
-        return view('Painel.index', compact('user','caminhos','aguadando','implantadas','enviadas','aprovadas'));
+        return view('Painel.index', compact('user','caminhos','aguardando','implantadas','enviadas','aprovadas'));
         
     }
 /*

@@ -35,7 +35,7 @@
                                 <th>Ação</th>
                             </tr>
                             @foreach ($sugestoes as $sugestao)
-                                @can('minhas-sugestoes', $sugestao)
+                                @can('listar-implantadas', $sugestao)
                                 <tr>
                                     <td>{{ $sugestao->id }}</td>
                                     <td>{{ $sugestao->titulo}}</td>
@@ -46,6 +46,8 @@
                                         @elseif($sugestao->status == 2)
                                             reprovado...
                                         @elseif($sugestao->status == 3)
+                                            implantado!
+                                        @elseif($sugestao->status == 4)
                                             em avaliação de viabilidade...
                                         @else
                                             aguardando...

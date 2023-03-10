@@ -109,8 +109,8 @@ class SugestaoController extends Controller
         $comum = 'comum';
         $admin = 'admin';
         //$sugestoes = DB::table('sugestoes')->where('status', '=', '3');
-        //$sugestoes = Sugestao::where('status', '3')->get();
-        $sugestoes = Sugestao::where('status', '>' ,'0')->get();
+        $implantadas = Sugestao::where('status', '3')->get();
+        //$sugestoes = Sugestao::where('status', '=' ,'3')->get();
 
         // breadcrumbs
         $caminhos = [
@@ -124,7 +124,7 @@ class SugestaoController extends Controller
         }
 
         return view('Painel.sugestoes.implantadas', [
-            'sugestoes'=> $sugestoes,
+            'sugestoes'=> $implantadas,
             'caminhos' =>$caminhos,
         ]);
     }
