@@ -102,7 +102,7 @@
                             @if (Auth::check())
 
                             @else
-                                <a href="{{ route('register') }}" class="btn btn-success">Registrar agora</a>
+                                <a href="{{ url('/registrar/form') }}" class="btn btn-success">Registrar agora</a>
                             @endif
 
                         <a href="{{ route('site.sobre') }}" class="btn btn-outline-light">Conhecer mais</a>

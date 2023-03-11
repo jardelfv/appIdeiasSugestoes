@@ -3,7 +3,7 @@
 @section('content')
     <div class="container pt-4 pb-4">
         <h2>Como funciona o programa de ideias e sugestões</h2>
-        <p class="lead">
+        <p class="lead pt-4">
             NÓS QUEREMOS OUVIR VOCÊ! Se você tiver uma ideia útil, inovadora ou que gere algum benefício para a
             Administração Municipal ou para nossos cidadãos, cadastre em nosso portal. Nosso time técnico irá avaliar
             a possibilidade de implantar sua sugestão. Caso sua ideia seja aprovada iremos colocar seu nome em nosso

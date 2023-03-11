@@ -6,7 +6,7 @@
     <div class="card-deck">
 
         <div class="card card-shadow">
-            <div class="icon text-center">
+            <div class="icon text-center pt-3">
                 <i class="fa  fa-file-text fa-5x " style="color:green"></i>
             </div>
             <!--
@@ -22,7 +22,7 @@
         </div>
 
         <div class="card card-shadow">
-            <div class="icon text-center">
+            <div class="icon text-center pt-3">
                 <i class="fa fa-desktop fa-5x " style="color:green"></i>
             </div>
             <!--
@@ -38,7 +38,7 @@
         </div>
 
         <div class="card card-shadow">
-            <div class="icon text-center">
+            <div class="icon text-center pt-3">
                 <i class="fa  fa-thumbs-up fa-5x " style="color:green"></i>
             </div>
             <!--
