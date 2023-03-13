@@ -37,8 +37,8 @@ class PainelController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
-            ['url'=>'/Painel/usuario', 'titulo'=>'Usuários'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
+            ['url'=>'', 'titulo'=>'Usuários'],
         ];
         
         // consulta para os cards

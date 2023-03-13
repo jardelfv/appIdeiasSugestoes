@@ -38,7 +38,7 @@ class UserController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Usuários Cadastrados'],
         ];
 

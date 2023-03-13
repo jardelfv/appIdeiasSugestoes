@@ -47,7 +47,7 @@ class SugestaoController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Listar Sugestões'],
         ];
         
@@ -68,8 +68,8 @@ class SugestaoController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
-            ['url'=>'/Painel/sugestao/listar', 'titulo'=>'Listar Sugestões'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
+            ['url'=>url('/Painel/sugestao/listar'), 'titulo'=>'Listar Sugestões'],
             ['url'=>'', 'titulo'=>'Detalhes Sugestão'],
         ];
 
@@ -95,7 +95,7 @@ class SugestaoController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Minhas Sugestões'],
         ];
 
@@ -114,7 +114,7 @@ class SugestaoController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Sugestões Implantadas'],
         ];
 
@@ -184,7 +184,7 @@ class SugestaoController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Avaliar Sugestões'],
         ];
 
@@ -209,7 +209,7 @@ class SugestaoController extends Controller
 
         // breadcrumbs
         $caminhos = [
-            ['url'=>'/Painel', 'titulo'=>'Painel'],
+            ['url'=>route('Painel.index'), 'titulo'=>'Painel'],
             ['url'=>'', 'titulo'=>'Cadastrar Sugestões'],
         ];
 

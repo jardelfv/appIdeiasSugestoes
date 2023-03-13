@@ -28,7 +28,6 @@
                                 <th>Cód</th>
                                 <th>Título</th>
                                 <th>Descrição</th>
-                                <th>Tipo</th>
                                 <th>Status</th>
                                 <th>Data Criação</th>
                                 <th>Data Aprovação</th>
@@ -41,7 +40,6 @@
                                     <td>{{ $sugestao->id }}</td>
                                     <td>{{ $sugestao->titulo}}</td>
                                     <td>{{ $sugestao->descricao}}</td>
-                                    <td>{{ $sugestao->tipo }}</td>
                                     <td>
                                         @if($sugestao->status == 1)
                                             aprovado!

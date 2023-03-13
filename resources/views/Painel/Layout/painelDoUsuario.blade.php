@@ -43,7 +43,7 @@
                     <div class="icon">
                         <i class="fa fa-child"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Acompanhar <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('Painel.sugestoes.minhasSugestoes') }}" class="small-box-footer">Acompanhar <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 

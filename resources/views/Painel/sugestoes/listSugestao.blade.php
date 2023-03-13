@@ -51,6 +51,9 @@
                                         @elseif($sugestao->status == 2)
                                             <span class="label label-danger">reprovado</span>
                                         @elseif($sugestao->status == 3)
+                                            <i class="fa fa  fa-child"></i>
+                                            implantado!
+                                        @elseif($sugestao->status == 4)
                                             <i class="fa fa  fa-exchange"></i>
                                             em avaliação de viabilidade...
                                         @else
